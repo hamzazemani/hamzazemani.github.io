@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Katzen Chaos</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #fff7f2 0%, #ffe8f0 100%);
+      color: #2b2b2b;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+    .wrap {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 44px);
+    }
+    .sub {
+      margin-top: 6px;
+      opacity: 0.8;
+    }
+    .panel {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      background: rgba(255,255,255,0.7);
+      border: 2px solid rgba(0,0,0,0.08);
+      border-radius: 20px;
+      padding: 12px 14px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+    .stat {
+      background: white;
+      border-radius: 14px;
+      padding: 10px 14px;
+      min-width: 120px;
+      text-align: center;
+      font-weight: bold;
+    }
+    button {
+      border: none;
+      border-radius: 14px;
+      padding: 12px 16px;
+      font-size: 16px;
+      cursor: pointer;
+      background: #111;
+      color: white;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+    button:hover { transform: translateY(-2px); }
+    button.secondary {
+      background: white;
+      color: #111;
+      border: 2px solid #111;
+    }
+    .arena {
+      position: relative;
+      margin-top: 18px;
+      height: min(70vh, 680px);
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.8), transparent 25%),
+        radial-gradient(circle at 80% 30%, rgba(255,255,255,0.6), transparent 20%),
+        linear-gradient(180deg, #b7f0c1 0%, #95d5a3 100%);
+      border-radius: 28px;
+      border: 3px solid rgba(0,0,0,0.08);
+      box-shadow: inset 0 -12px 0 rgba(0,0,0,0.06), 0 12px 28px rgba(0,0,0,0.12);
+      overflow: hidden;
+    }
+    .arena::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 80px;
+      background: repeating-linear-gradient(
+        90deg,
+        rgba(255,255,255,0.22),
+        rgba(255,255,255,0.22) 12px,
+        rgba(255,255,255,0.08) 12px,
+        rgba(255,255,255,0.08) 24px
+      );
+      opacity: 0.6;
+    }
+    .cat {
+      position: absolute;
+      font-size: clamp(34px, 6vw, 54px);
+      user-select: none;
+      cursor: pointer;
+      transition: transform 0.12s ease;
+      filter: drop-shadow(0 6px 8px rgba(0,0,0,0.2));
+    }
+    .cat:hover {
+      transform: scale(1.14) rotate(-6deg);
+    }
+    .floating {
+      position: absolute;
+      font-weight: bold;
+      pointer-events: none;
+      animation: floatUp 900ms ease forwards;
+      text-shadow: 0 2px 6px rgba(255,255,255,0.7);
+    }
+    @keyframes floatUp {
+      0% { opacity: 0; transform: translateY(8px) scale(0.9); }
+      20% { opacity: 1; }
+      100% { opacity: 0; transform: translateY(-42px) scale(1.2); }
+    }
+    .overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(10,10,10,0.28);
+      backdrop-filter: blur(4px);
+      z-index: 20;
+    }
+    .card {
+      width: min(92%, 520px);
+      background: white;
+      padding: 28px;
+      border-radius: 28px;
+      text-align: center;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.18);
+    }
+    .card h2 {
+      margin-top: 0;
+      font-size: clamp(28px, 4vw, 40px);
+    }
+    .card p {
+      line-height: 1.5;
+      opacity: 0.85;
+    }
+    .small {
+      font-size: 14px;
+      opacity: 0.7;
+      margin-top: 12px;
+    }
+    @media (max-width: 700px) {
+      .stat { min-width: 95px; font-size: 14px; }
+      button { width: 100%; }
+      .panel { align-items: stretch; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="header">
+      <div>
+        <h1>🐱 Katzen Chaos</h1>
+        <div class="sub">Fang in 30 Sekunden so viele verrückte Katzen wie möglich.</div>
+      </div>
+      <div class="panel">
+        <div class="stat">Punkte<br><span id="score">0</span></div>
+        <div class="stat">Zeit<br><span id="time">30</span>s</div>
+        <div class="stat">Highscore<br><span id="highscore">0</span></div>
+        <button id="startBtn">Spiel starten</button>
+        <button id="restartBtn" class="secondary">Neu starten</button>
+      </div>
+    </div>
+
+    <div class="arena" id="arena">
+      <div class="overlay" id="overlay">
+        <div class="card">
+          <h2>😹 Bereit für Chaos?</h2>
+          <p>
+            Klicke auf die Katzen, bevor sie wieder verschwinden. Manche geben mehr Punkte,
+            manche sind einfach nur frech.
+          </p>
+          <button id="overlayStart">Los geht's</button>
+          <div class="small">Tipp: Schnelle Katzen bringen extra Punkte.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const arena = document.getElementById('arena');
+    const overlay = document.getElementById('overlay');
+    const scoreEl = document.getElementById('score');
+    const timeEl = document.getElementById('time');
+    const highscoreEl = document.getElementById('highscore');
+    const startBtn = document.getElementById('startBtn');
+    const restartBtn = document.getElementById('restartBtn');
+    const overlayStart = document.getElementById('overlayStart');
+
+    const catFaces = ['🐱', '😺', '😸', '😹', '🐈', '🐈‍⬛'];
+    let score = 0;
+    let timeLeft = 30;
+    let timer = null;
+    let spawnLoop = null;
+    let running = false;
+    let highscore = Number(localStorage.getItem('cat-chaos-highscore') || 0);
+    highscoreEl.textContent = highscore;
+
+    function random(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    function updateUI() {
+      scoreEl.textContent = score;
+      timeEl.textContent = timeLeft;
+      highscoreEl.textContent = highscore;
+    }
+
+    function clearCats() {
+      arena.querySelectorAll('.cat, .floating').forEach(el => el.remove());
+    }
+
+    function showOverlay(title, text, buttonText = 'Nochmal spielen') {
+      overlay.innerHTML = `
+        <div class="card">
+          <h2>${title}</h2>
+          <p>${text}</p>
+          <button id="overlayStart">${buttonText}</button>
+          <div class="small">Highscore: ${highscore}</div>
+        </div>
+      `;
+      overlay.style.display = 'flex';
+      document.getElementById('overlayStart').addEventListener('click', startGame);
+    }
+
+    function spawnFloatingText(x, y, text) {
+      const fx = document.createElement('div');
+      fx.className = 'floating';
+      fx.textContent = text;
+      fx.style.left = x + 'px';
+      fx.style.top = y + 'px';
+      arena.appendChild(fx);
+      setTimeout(() => fx.remove(), 900);
+    }
+
+    function spawnCat() {
+      if (!running) return;
+
+      const cat = document.createElement('div');
+      cat.className = 'cat';
+      cat.textContent = catFaces[Math.floor(Math.random() * catFaces.length)];
+
+      const arenaRect = arena.getBoundingClientRect();
+      const size = random(38, 64);
+      const maxX = arena.clientWidth - size - 16;
+      const maxY = arena.clientHeight - size - 100;
+      const x = random(10, Math.max(20, maxX));
+      const y = random(10, Math.max(20, maxY));
+      const lifetime = random(650, 1500);
+      const points = lifetime < 900 ? 3 : lifetime < 1100 ? 2 : 1;
+
+      cat.style.left = x + 'px';
+      cat.style.top = y + 'px';
+      cat.style.fontSize = size + 'px';
+
+      const removeTimeout = setTimeout(() => {
+        cat.remove();
+      }, lifetime);
+
+      cat.addEventListener('click', () => {
+        clearTimeout(removeTimeout);
+        score += points;
+        if (score > highscore) {
+          highscore = score;
+          localStorage.setItem('cat-chaos-highscore', highscore);
+        }
+        updateUI();
+        spawnFloatingText(x + 10, y, `+${points}`);
+        cat.remove();
+      });
+
+      arena.appendChild(cat);
+    }
+
+    function stopGame() {
+      running = false;
+      clearInterval(timer);
+      clearInterval(spawnLoop);
+      clearCats();
+      if (score > highscore) {
+        highscore = score;
+        localStorage.setItem('cat-chaos-highscore', highscore);
+      }
+      updateUI();
+      const message = score >= 45
+        ? `Legendär. Du hast ${score} Punkte gemacht. Die Katzen akzeptieren dich jetzt als Chef.`
+        : score >= 25
+        ? `Stark. ${score} Punkte. Die Katzen respektieren dich ein bisschen.`
+        : `Du hast ${score} Punkte. Die Katzen lachen noch, aber nächstes Mal nicht mehr.`;
+      showOverlay('🎉 Zeit vorbei', message);
+    }
+
+    function startGame() {
+      running = true;
+      score = 0;
+      timeLeft = 30;
+      overlay.style.display = 'none';
+      clearCats();
+      updateUI();
+
+      clearInterval(timer);
+      clearInterval(spawnLoop);
+
+      timer = setInterval(() => {
+        timeLeft -= 1;
+        updateUI();
+        if (timeLeft <= 0) stopGame();
+      }, 1000);
+
+      spawnLoop = setInterval(() => {
+        spawnCat();
+        if (Math.random() > 0.45) setTimeout(spawnCat, random(120, 260));
+      }, 420);
+    }
+
+    startBtn.addEventListener('click', startGame);
+    restartBtn.addEventListener('click', startGame);
+    overlayStart.addEventListener('click', startGame);
+    updateUI();
+  </script>
+</body>
+</html>
