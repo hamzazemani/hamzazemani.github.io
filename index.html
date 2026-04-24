@@ -3,429 +3,398 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hamza Zemani | Maschinenbauingenieur & Projektmanager</title>
-
+<title>Hamza Zemani | Maschinenbauingenieur &amp; Projektmanager</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-*{
-box-sizing:border-box;
-margin:0;
-padding:0;
+:root{
+  --bg:#070e1c;--bg2:#0d1829;--bg3:#111f35;
+  --border:#1a2e4a;--text:#dde6f0;--muted:#5a7a99;
+  --cyan:#00d4ff;--violet:#a78bfa;--gold:#fbbf24;--white:#fff;
 }
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;}
 
-body{
-font-family:Arial, sans-serif;
-background:#0f172a;
-color:#e5e7eb;
-line-height:1.6;
-}
+#progress-bar{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--cyan),var(--violet));z-index:9999;transition:width .1s linear;}
 
-.hero{
-max-width:1150px;
-margin:auto;
-padding:40px 20px;
-display:grid;
-grid-template-columns:260px 1fr;
-gap:28px;
-}
+.bg-mesh{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(ellipse 60% 40% at 15% 20%,rgba(0,212,255,.04) 0%,transparent 60%),
+             radial-gradient(ellipse 50% 50% at 85% 80%,rgba(167,139,250,.04) 0%,transparent 60%);}
 
-.photo-card{
-background:#111827;
-border:1px solid #1f2937;
-border-radius:16px;
-padding:16px;
-text-align:center;
-}
+.cursor-glow{position:fixed;width:400px;height:400px;border-radius:50%;pointer-events:none;z-index:0;
+  background:radial-gradient(circle,rgba(0,212,255,.03) 0%,transparent 70%);
+  transform:translate(-50%,-50%);transition:left .05s,top .05s;}
 
-.photo-card img{
-width:100%;
-height:220px;
-object-fit:cover;
-object-position:center 15%;
-border-radius:12px;
-margin-bottom:12px;
-display:block;
-}
+nav{position:fixed;top:2px;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;
+  padding:0 40px;height:58px;background:rgba(7,14,28,.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
 
-.photo-card p{
-color:#94a3b8;
-font-size:14px;
-}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:16px;color:var(--white);letter-spacing:0.3px;}
+.nav-logo span{color:var(--cyan);}
 
-.hero-content{
-background:#111827;
-border:1px solid #1f2937;
-border-radius:16px;
-padding:28px;
-}
+.nav-links{display:flex;gap:22px;list-style:none;align-items:center;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:13px;font-weight:500;transition:color .2s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--cyan);transition:width .3s;}
+.nav-links a:hover,.nav-links a.active{color:var(--cyan);}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%;}
 
-.hero-content h1{
-font-size:42px;
-color:white;
-margin-bottom:8px;
+.nav-en-btn{
+  display:inline-flex!important;align-items:center;gap:7px;
+  background:linear-gradient(135deg,var(--cyan),#0099cc)!important;
+  color:#000!important;font-weight:700!important;font-size:13px!important;
+  padding:8px 18px!important;border-radius:8px!important;
+  text-decoration:none!important;
+  box-shadow:0 0 20px rgba(0,212,255,.35);
+  transition:all .2s!important;
 }
+.nav-en-btn::after{display:none!important;}
+.nav-en-btn:hover{transform:translateY(-2px)!important;box-shadow:0 0 32px rgba(0,212,255,.55)!important;color:#000!important;}
 
-.hero-content h2{
-font-size:22px;
-color:#22c55e;
-font-weight:normal;
-margin-bottom:16px;
-}
+.hero{max-width:1120px;margin:0 auto;padding:100px 30px 60px;display:grid;grid-template-columns:285px 1fr;gap:50px;align-items:start;position:relative;z-index:1;}
 
-.hero-content p{
-font-size:17px;
-color:#cbd5e1;
-margin-bottom:20px;
-}
+.photo-card{position:sticky;top:78px;}
+.photo-wrap{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:5/7;border:1px solid var(--border);
+  box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 0 1px rgba(0,212,255,.08);
+  transition:transform .15s ease;cursor:default;}
+.photo-wrap img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform .4s;}
+.photo-wrap:hover img{transform:scale(1.03);}
+.photo-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(7,14,28,.9) 100%);z-index:1;}
+.photo-badge{position:absolute;bottom:14px;left:14px;right:14px;z-index:2;
+  background:rgba(0,212,255,.1);border:1px solid rgba(0,212,255,.25);backdrop-filter:blur(12px);
+  border-radius:12px;padding:10px 14px;text-align:center;}
+.photo-badge span{font-size:11px;color:var(--cyan);font-weight:600;letter-spacing:.8px;text-transform:uppercase;}
 
-.contact-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:12px;
-}
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px;}
+.stat-box{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:12px;text-align:center;transition:all .25s;cursor:default;}
+.stat-box:hover{border-color:rgba(0,212,255,.3);background:rgba(0,212,255,.04);}
+.stat-num{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;display:block;
+  background:linear-gradient(135deg,var(--cyan),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.stat-lbl{font-size:10px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.8px;}
 
-.contact-box{
-background:#1e293b;
-border:1px solid #334155;
-border-radius:10px;
-padding:12px;
-font-size:14px;
-}
+.hero-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px;}
+.tag{background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.2);color:var(--cyan);
+  padding:4px 12px;border-radius:100px;font-size:11px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;}
+.tag.v{background:rgba(167,139,250,.08);border-color:rgba(167,139,250,.2);color:var(--violet);}
 
-.download-btn{
-display:inline-block;
-margin-top:20px;
-padding:12px 18px;
-background:#22c55e;
-color:white;
-text-decoration:none;
-border-radius:8px;
-font-weight:bold;
-}
+.hero-name{font-family:'Syne',sans-serif;font-size:62px;line-height:1.0;color:var(--white);margin-bottom:10px;letter-spacing:-1px;}
+.hero-name .first{display:block;}
+.hero-name .last{display:block;background:linear-gradient(135deg,var(--cyan),var(--violet));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 
-.container{
-max-width:1150px;
-margin:auto;
-padding:0 20px 40px;
-}
+.hero-sub{font-size:15px;color:var(--muted);margin-bottom:26px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.hero-sub .dot{width:4px;height:4px;border-radius:50%;background:var(--muted);flex-shrink:0;}
 
-.section{
-background:#111827;
-border:1px solid #1f2937;
-border-radius:16px;
-padding:28px;
-margin-bottom:24px;
-}
+.hero-bio{font-size:15px;color:#8da8c0;line-height:1.8;margin-bottom:32px;
+  padding:20px 24px;border-left:2px solid var(--cyan);
+  background:rgba(0,212,255,.04);border-radius:0 12px 12px 0;}
 
-.section h3{
-font-size:26px;
-margin-bottom:18px;
-border-left:4px solid #22c55e;
-padding-left:10px;
-color:white;
-}
+.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:28px;}
+.cbox{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:12px 14px;transition:all .25s;cursor:default;}
+.cbox:hover{border-color:rgba(0,212,255,.3);background:rgba(0,212,255,.04);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.2);}
+.cbox label{display:block;font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:4px;}
+.cbox a,.cbox span{font-size:13px;color:var(--text);text-decoration:none;font-weight:500;display:block;}
+.cbox a:hover{color:var(--cyan);}
 
-.entry{
-padding-bottom:18px;
-margin-bottom:18px;
-border-bottom:1px solid #334155;
-}
+.btn-row{display:flex;gap:12px;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:10px;font-size:14px;font-weight:600;text-decoration:none;transition:all .25s;border:none;font-family:'Inter',sans-serif;cursor:pointer;}
+.btn-pdf{background:var(--cyan);color:#050a12;}
+.btn-pdf:hover{background:#00b8e0;transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,212,255,.35);}
 
-.entry:last-child{
-border-bottom:none;
-margin-bottom:0;
-padding-bottom:0;
-}
+.main{max-width:1120px;margin:0 auto;padding:0 30px 80px;display:grid;grid-template-columns:285px 1fr;gap:50px;align-items:start;position:relative;z-index:1;}
 
-.entry-header{
-display:flex;
-justify-content:space-between;
-flex-wrap:wrap;
-gap:12px;
-margin-bottom:6px;
-}
+.sidebar{}
+.scard{background:var(--bg2);border:1px solid var(--border);border-radius:18px;padding:22px;margin-bottom:18px;transition:border-color .3s;}
+.scard:hover{border-color:rgba(0,212,255,.15);}
+.stitle{font-size:11px;font-weight:700;color:var(--cyan);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+.stitle::after{content:'';flex:1;height:1px;background:var(--border);}
 
-.entry-header h4{
-font-size:20px;
-color:white;
-}
+.sbar{margin-bottom:14px;}
+.sbar-head{display:flex;justify-content:space-between;font-size:14px;margin-bottom:6px;color:var(--text);font-weight:500;}
+.sbar-head span{color:var(--muted);font-size:11px;}
+.sbar-track{height:3px;background:var(--bg3);border-radius:100px;overflow:hidden;}
+.sbar-fill{height:100%;border-radius:100px;width:0;background:linear-gradient(90deg,var(--cyan),var(--violet));transition:width 1.2s cubic-bezier(.25,.46,.45,.94);}
 
-.entry-header span{
-color:#22c55e;
-font-weight:bold;
-}
+.chip{display:inline-block;background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:6px 14px;border-radius:8px;font-size:13px;font-weight:500;margin:0 5px 7px 0;transition:all .2s;cursor:default;}
+.chip:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(0,212,255,.05);}
 
-.company{
-color:#93c5fd;
-margin-bottom:10px;
-font-weight:bold;
-}
+.lang-row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px;}
+.lang-row:last-child{border-bottom:none;}
+.lang-lv{font-size:11px;color:var(--cyan);font-weight:700;background:rgba(0,212,255,.1);padding:2px 9px;border-radius:5px;}
 
-ul{
-padding-left:20px;
-}
+.cert-row{display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid var(--border);}
+.cert-row:last-child{border-bottom:none;}
+.cert-ico{width:34px;height:34px;flex-shrink:0;background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.25);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:17px;}
+.cert-name{font-size:13px;font-weight:600;color:var(--text);}
+.cert-sub{font-size:11px;color:var(--muted);}
 
-li{
-margin-bottom:6px;
-color:#cbd5e1;
-}
+.content{}
+.sec{margin-bottom:46px;}
+.sec-title{font-family:'Syne',sans-serif;font-size:26px;font-weight:700;color:var(--white);margin-bottom:24px;display:flex;align-items:center;gap:14px;}
+.sec-title::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent);}
+.sec-ico{width:38px;height:38px;flex-shrink:0;background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.2);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;}
 
-.grid-2{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:20px;
-}
+.timeline{position:relative;padding-left:28px;}
+.timeline::before{content:'';position:absolute;left:9px;top:12px;bottom:0;width:1px;background:linear-gradient(180deg,var(--cyan),transparent);}
 
-.skill-item{
-background:#1e293b;
-border:1px solid #334155;
-border-radius:10px;
-padding:12px;
-margin-bottom:10px;
-}
+.entry{position:relative;margin-bottom:22px;padding:22px 24px;background:var(--bg2);border:1px solid var(--border);border-radius:16px;
+  transition:all .3s;opacity:0;transform:translateX(-14px);}
+.entry.visible{opacity:1;transform:translateX(0);}
+.entry:hover{border-color:rgba(0,212,255,.25);transform:translateX(5px);box-shadow:0 8px 30px rgba(0,0,0,.25),-4px 0 0 var(--cyan);}
+.entry::before{content:'';position:absolute;left:-32px;top:26px;width:11px;height:11px;background:var(--cyan);border-radius:50%;border:2px solid var(--bg);box-shadow:0 0 0 3px rgba(0,212,255,.2),0 0 12px rgba(0,212,255,.4);}
+.entry-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:4px;flex-wrap:wrap;}
+.entry-title{font-family:'Syne',sans-serif;font-size:17px;font-weight:700;color:var(--white);}
+.entry-date{font-size:12px;font-weight:600;color:var(--cyan);background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.18);padding:3px 12px;border-radius:100px;white-space:nowrap;flex-shrink:0;}
+.entry-co{font-size:13px;font-weight:600;color:var(--violet);margin-bottom:12px;display:flex;align-items:center;gap:6px;}
+.entry-co::before{content:'▸';font-size:10px;opacity:.7;}
+.entry ul{list-style:none;padding:0;}
+.entry li{font-size:13px;color:#7a9ab8;line-height:1.7;padding:3px 0 3px 16px;position:relative;}
+.entry li::before{content:'–';position:absolute;left:0;color:var(--cyan);font-weight:700;}
 
-.footer{
-text-align:center;
-color:#94a3b8;
-padding:20px 30px 10px;
-}
+.edu-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:22px;margin-bottom:14px;transition:all .3s;opacity:0;transform:translateY(14px);}
+.edu-card.visible{opacity:1;transform:translateY(0);}
+.edu-card:hover{border-color:rgba(167,139,250,.3);}
+.edu-deg{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:var(--white);margin-bottom:4px;}
+.edu-school{font-size:13px;font-weight:600;color:var(--violet);margin-bottom:8px;}
+.edu-meta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px;}
+.edu-tag{font-size:11px;color:var(--muted);background:var(--bg3);padding:3px 9px;border-radius:5px;}
+.edu-detail{font-size:12px;color:#5a7a99;line-height:1.65;font-style:italic;}
 
-.hidden-link{
-text-align:center;
-padding-bottom:30px;
-}
+.proj-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:22px;margin-bottom:14px;border-left:3px solid var(--gold);transition:all .3s;opacity:0;transform:translateY(14px);}
+.proj-card.visible{opacity:1;transform:translateY(0);}
+.proj-card:hover{border-color:rgba(251,191,36,.4);box-shadow:0 8px 30px rgba(0,0,0,.2);transform:translateY(-2px);}
+.proj-title{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:var(--white);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.proj-title::before{content:'★';color:var(--gold);font-size:13px;}
+.proj-li{font-size:13px;color:#7a9ab8;padding:3px 0 3px 18px;position:relative;line-height:1.65;}
+.proj-li::before{content:'–';position:absolute;left:0;color:var(--gold);font-weight:700;}
 
-.hidden-link a{
-font-size:12px;
-color:#64748b;
-text-decoration:none;
-opacity:0.55;
-letter-spacing:1px;
-}
+footer{border-top:1px solid var(--border);text-align:center;padding:28px 20px;color:var(--muted);font-size:12px;position:relative;z-index:1;}
+.hidden-link{text-align:center;padding:8px;}
+.hidden-link a{font-size:10px;color:#0d1829;text-decoration:none;letter-spacing:2px;}
+.hidden-link a:hover{color:#1a2e4a;}
 
-.hidden-link a:hover{
-opacity:0.9;
-}
+[data-tip]{position:relative;}
+[data-tip]:hover::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:#0d1829;border:1px solid var(--border);color:var(--text);font-size:11px;padding:5px 10px;border-radius:6px;white-space:nowrap;z-index:999;box-shadow:0 4px 12px rgba(0,0,0,.4);}
 
 @media(max-width:900px){
-.hero{
-grid-template-columns:1fr;
+  .hero,.main{grid-template-columns:1fr;}
+  .photo-card{position:static;max-width:240px;}
+  .hero-name{font-size:44px;}
+  nav{padding:0 20px;}
+  .hide-sm{display:none!important;}
 }
-
-.contact-grid{
-grid-template-columns:1fr 1fr;
-}
-
-.grid-2{
-grid-template-columns:1fr;
-}
-}
-
 @media(max-width:600px){
-.contact-grid{
-grid-template-columns:1fr;
-}
-
-.hero-content h1{
-font-size:34px;
-}
-
-.hero-content h2{
-font-size:18px;
-}
+  .contact-grid{grid-template-columns:1fr 1fr;}
+  .hero-name{font-size:36px;}
+  .hero,.main{padding:80px 16px 40px;}
 }
 </style>
 </head>
-
 <body>
 
+<div id="progress-bar"></div>
+<div class="cursor-glow" id="cg"></div>
+<div class="bg-mesh"></div>
+
+<nav>
+  <span class="nav-logo">Hamza <span>Zemani</span></span>
+  <ul class="nav-links">
+    <li class="hide-sm"><a href="#erfahrung">Erfahrung</a></li>
+    <li class="hide-sm"><a href="#ausbildung">Ausbildung</a></li>
+    <li class="hide-sm"><a href="#projekte">Projekte</a></li>
+    <li><a href="cv-en.html" class="nav-en-btn">&#127760; English CV</a></li>
+  </ul>
+</nav>
+
 <section class="hero">
+  <div class="photo-card">
+    <div class="photo-wrap" id="pw">
+      <img src="Bewerbungsphoto.jpg" alt="Hamza Zemani">
+      <div class="photo-overlay"></div>
+      <div class="photo-badge"><span>IPMA Level D &nbsp;&middot;&nbsp; Scrum Master</span></div>
+    </div>
+    <div class="stat-grid">
+      <div class="stat-box" data-tip="Jahre Erfahrung"><span class="stat-num" data-count="10">0</span><span class="stat-lbl">Jahre</span></div>
+      <div class="stat-box" data-tip="Projekte"><span class="stat-num" data-count="30">0</span><span class="stat-lbl">Projekte</span></div>
+      <div class="stat-box" data-tip="Sprachen"><span class="stat-num" data-count="4">0</span><span class="stat-lbl">Sprachen</span></div>
+    </div>
+  </div>
 
-<div class="photo-card">
-<img src="Bewerbungsphoto.jpg" alt="Hamza Zemani">
-<p>Maschinenbauingenieur ÃÂ· Projektmanager ÃÂ· Technische Entwicklung</p>
-</div>
-
-<div class="hero-content">
-<h1>Hamza Zemani</h1>
-<h2>Maschinenbauingenieur ÃÂ· Projektmanager ÃÂ· Technische Entwicklung</h2>
-
-<p>
-Maschinenbauingenieur mit ÃÂ¼ber zehn Jahren Erfahrung in Projektmanagement,
-Konstruktion und technischer Entwicklung von Anlagen, Fahrzeugen und Batteriesystemen.
-Sicher in interdisziplinÃÂ¤rer Koordination, technischer Bewertung und strukturierter Projektsteuerung.
-</p>
-
-<div class="contact-grid">
-<div class="contact-box"><b>Telefon</b><br><a href="tel:+4901785646767" style="color:inherit;text-decoration:none;">01785646767</a></div>
-<div class="contact-box"><b>E-Mail</b><br><a href="mailto:Hamza.Zemani@gmx.de" style="color:inherit;text-decoration:none;">Hamza.Zemani@gmx.de</a></div>
-<div class="contact-box"><b>Ort</b><br>Karlsfeld bei MÃÂ¼nchen</div>
-
-<div class="contact-box"><b>Geburtsdatum</b><br>05.03.1990</div>
-<div class="contact-box"><b>Sprachen</b><br>DE ÃÂ· EN ÃÂ· FR ÃÂ· AR</div>
-<div class="contact-box"><b>Zertifikat</b><br>IPMA Level D</div>
-</div>
-
-<a href="cv.pdf" class="download-btn">PDF Lebenslauf herunterladen</a>
-<a href="cv-en.html" class="download-btn" style="background:#3b82f6;border:none;margin-top:10px;display:inline-block;">🌐 English CV</a>
-</div>
-
+  <div>
+    <div class="hero-tags">
+      <span class="tag">Maschinenbau</span>
+      <span class="tag v">Projektmanagement</span>
+      <span class="tag">Batteriesysteme</span>
+      <span class="tag v">Fahrzeugtechnik</span>
+    </div>
+    <h1 class="hero-name"><span class="first">Hamza</span><span class="last">Zemani</span></h1>
+    <div class="hero-sub">
+      <span>Maschinenbauingenieur</span><span class="dot"></span>
+      <span>Projektmanager</span><span class="dot"></span>
+      <span>Technische Entwicklung</span>
+    </div>
+    <p class="hero-bio">Maschinenbauingenieur mit &uuml;ber zehn Jahren Erfahrung in Projektmanagement, Konstruktion und technischer Entwicklung von Anlagen, Fahrzeugen und Batteriesystemen. Sicher in interdisziplin&auml;rer Koordination, technischer Bewertung und strukturierter Projektsteuerung.</p>
+    <div class="contact-grid">
+      <div class="cbox"><label>Telefon</label><a href="tel:+4901785646767">01785646767</a></div>
+      <div class="cbox"><label>E-Mail</label><a href="mailto:Hamza.Zemani@gmx.de">Hamza.Zemani@gmx.de</a></div>
+      <div class="cbox"><label>Ort</label><span>Karlsfeld b. M&uuml;nchen</span></div>
+      <div class="cbox"><label>Geburtsdatum</label><span>05.03.1990</span></div>
+      <div class="cbox"><label>Nationalit&auml;t</label><span>Marokkanisch &middot; Deutsch</span></div>
+      <div class="cbox"><label>Zertifikate</label><span>IPMA D &middot; Scrum</span></div>
+    </div>
+    <div class="btn-row">
+      <a href="cv.pdf" download class="btn btn-pdf">&#8595;&nbsp; PDF Lebenslauf</a>
+    </div>
+  </div>
 </section>
 
-<div class="container">
+<div class="main">
+  <aside class="sidebar">
+    <div class="scard">
+      <div class="stitle">Kenntnisse</div>
+      <div class="sbar"><div class="sbar-head">Projektmanagement <span>Experte</span></div><div class="sbar-track"><div class="sbar-fill" data-w="95"></div></div></div>
+      <div class="sbar"><div class="sbar-head">Siemens NX <span>Experte</span></div><div class="sbar-track"><div class="sbar-fill" data-w="95"></div></div></div>
+      <div class="sbar"><div class="sbar-head">SAP / PDM / Teamcenter <span>Experte</span></div><div class="sbar-track"><div class="sbar-fill" data-w="92"></div></div></div>
+      <div class="sbar"><div class="sbar-head">CATIA V5 <span>Fortgeschritten</span></div><div class="sbar-track"><div class="sbar-fill" data-w="84"></div></div></div>
+      <div class="sbar"><div class="sbar-head">ANSYS Workbench <span>Fortgeschritten</span></div><div class="sbar-track"><div class="sbar-fill" data-w="78"></div></div></div>
+      <div style="margin-top:16px">
+        <span class="chip">MS Office</span><span class="chip">Jira</span><span class="chip">VBA</span>
+        <span class="chip">Scrum</span><span class="chip">Agile</span><span class="chip">DMU</span><span class="chip">3D CAD</span>
+      </div>
+    </div>
+    <div class="scard">
+      <div class="stitle">Sprachen</div>
+      <div class="lang-row"><span>Deutsch</span><span class="lang-lv">Muttersprache</span></div>
+      <div class="lang-row"><span>Arabisch</span><span class="lang-lv">Muttersprache</span></div>
+      <div class="lang-row"><span>Franz&ouml;sisch</span><span class="lang-lv">Verhandlungssicher</span></div>
+      <div class="lang-row"><span>Englisch</span><span class="lang-lv">Verhandlungssicher</span></div>
+    </div>
+    <div class="scard">
+      <div class="stitle">Zertifikate</div>
+      <div class="cert-row"><div class="cert-ico">&#127885;</div><div><div class="cert-name">IPMA Level D</div><div class="cert-sub">Certified Project Manager</div></div></div>
+      <div class="cert-row"><div class="cert-ico">&#9889;</div><div><div class="cert-name">Scrum Master</div><div class="cert-sub">Agiles Projektmanagement</div></div></div>
+      <div class="cert-row"><div class="cert-ico">&#128640;</div><div><div class="cert-name">Siemens NX CAD</div><div class="cert-sub">Freiformfl&auml;chen &amp; GD&amp;T</div></div></div>
+    </div>
+  </aside>
 
-<section class="section">
-<h3>Berufserfahrung</h3>
+  <div class="content">
+    <section class="sec" id="erfahrung">
+      <h2 class="sec-title"><span class="sec-ico">&#128188;</span>Berufserfahrung</h2>
+      <div class="timeline">
+        <div class="entry">
+          <div class="entry-top"><div class="entry-title">Projektmanager Batterieprojekte</div><span class="entry-date">02/2024 &ndash; 10/2025</span></div>
+          <div class="entry-co">Invenox GmbH &ndash; M&uuml;nchen</div>
+          <ul>
+            <li>Leitung von Entwicklungsprojekten f&uuml;r Hochvoltbatterien von Prototyp bis Serie, inkl. Ressourcenplanung und Fortschrittssteuerung.</li>
+            <li>Verantwortung f&uuml;r Termin und Budget, Risikoanalyse sowie Ma&szlig;nahmen zur Sicherstellung von Qualit&auml;t und Lieferf&auml;higkeit.</li>
+            <li>Kundenabstimmung zu technischen Anforderungen, Angebotserstellung und technische Kalkulationen.</li>
+            <li>Repr&auml;sentation auf Fachmessen und bei Kundenterminen.</li>
+          </ul>
+        </div>
+        <div class="entry">
+          <div class="entry-top"><div class="entry-title">Projektingenieur / Projektkoordinator</div><span class="entry-date">04/2017 &ndash; 01/2024</span></div>
+          <div class="entry-co">Invenio Virtual Technologies &ndash; BMW Projekte</div>
+          <ul>
+            <li>Projektkoordination in der Fahrzeug-Gesamtentwicklung durch Pr&uuml;fung virtueller 3D-Fahrzeugmodelle auf Baubarkeit, Anforderungen und Kollisionen.</li>
+            <li>Technische Bewertung von Abweichungen sowie Abstimmung konstruktiver L&ouml;sungen mit den Fachbereichen.</li>
+            <li>Aufbau und Pflege virtueller Fahrzeugst&auml;nde in SAP und PDM; Sicherstellung konsistenter Datenst&auml;nde.</li>
+            <li>Moderation interdisziplin&auml;rer Abstimmungen und Workshops.</li>
+          </ul>
+        </div>
+        <div class="entry">
+          <div class="entry-top"><div class="entry-title">Projektingenieur &amp; Konstrukteur</div><span class="entry-date">11/2014 &ndash; 03/2017</span></div>
+          <div class="entry-co">Invenio Engineering Services GmbH</div>
+          <ul>
+            <li>Entwicklung einer automatisierten Montageanlage (3D-Konstruktion in NX, Zeichnungserstellung, St&uuml;cklisten).</li>
+            <li>Detailkonstruktion von Getriebegehäusen, Schaltwellen und Zahnrädern inkl. DMU-Analysen.</li>
+            <li>Cost-Reduction-Projekte im Exterior-Bereich bei Opel.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-<div class="entry">
-<div class="entry-header">
-<h4>Projektmanager Batterieprojekte</h4>
-<span>2024 Ã¢ÂÂ 2025</span>
-</div>
-<div class="company">Invenox GmbH Ã¢ÂÂ MÃÂ¼nchen</div>
-<ul>
-<li>Leitung von Batterieprojekten von Prototyp bis Serienreife.</li>
-<li>Koordination zwischen Entwicklung, Produktion, Einkauf und Kunden.</li>
-<li>Termin- und Budgetsteuerung sowie technische Kundenberatung.</li>
-<li>Technische Angebotskalkulation und UnterstÃÂ¼tzung im Vertrieb.</li>
-<li>ReprÃÂ¤sentation auf Fachmessen und bei Kundenterminen.</li>
-</ul>
-</div>
+    <section class="sec" id="ausbildung">
+      <h2 class="sec-title"><span class="sec-ico">&#127891;</span>Ausbildung</h2>
+      <div class="edu-card">
+        <div class="edu-deg">Master of Engineering &ndash; Product Development &amp; Manufacturing</div>
+        <div class="edu-school">Hochschule RheinMain &ndash; Wiesbaden</div>
+        <div class="edu-meta"><span class="edu-tag">06/2016 &ndash; 06/2019</span><span class="edu-tag">Produktentwicklung &amp; Produktion</span></div>
+        <p class="edu-detail">Masterarbeit: Bedeutung von Product Manufacturing Information im Produktentwicklungsprozess &ndash; Anwendung im Siemens NX Umfeld zur Verbesserung der digitalen Zusammenarbeit zwischen Entwicklung und Fertigung.</p>
+      </div>
+      <div class="edu-card">
+        <div class="edu-deg">Bachelor of Engineering &ndash; Maschinenbau</div>
+        <div class="edu-school">Hochschule RheinMain &ndash; Wiesbaden</div>
+        <div class="edu-meta"><span class="edu-tag">03/2010 &ndash; 11/2014</span><span class="edu-tag">Fahrzeugentwicklung &amp; Konstruktion</span></div>
+        <p class="edu-detail">Bachelorarbeit: Entwicklung und Auslegung eines Getriebekonzepts, Simulationen mit ANSYS, Konstruktion eines Kupplungssystems.</p>
+      </div>
+    </section>
 
-<div class="entry">
-<div class="entry-header">
-<h4>Projektingenieur / Projektkoordinator</h4>
-<span>2017 Ã¢ÂÂ 2024</span>
-</div>
-<div class="company">Invenio Virtual Technologies Ã¢ÂÂ BMW Projekte</div>
-<ul>
-<li>Koordination virtueller Fahrzeugprojekte in SAP- und PDM-Umgebungen.</li>
-<li>Analyse von 3D-Fahrzeugmodellen mit Fokus auf Bauraum, Kollisionen und technische Anforderungen.</li>
-<li>Technische Bewertung von Abweichungen und Abstimmung mit den beteiligten Fachbereichen.</li>
-<li>Moderation interdisziplinÃÂ¤rer Workshops und Entwicklungsabstimmungen.</li>
-<li>Optimierung von Prozessen und Sicherstellung einer hohen DatenqualitÃÂ¤t.</li>
-</ul>
-</div>
-
-<div class="entry">
-<div class="entry-header">
-<h4>Projektingenieur / Konstrukteur</h4>
-<span>2014 Ã¢ÂÂ 2017</span>
-</div>
-<div class="company">Invenio Engineering Services</div>
-<ul>
-<li>Konstruktion automatisierter Montageanlagen.</li>
-<li>Entwicklung von Powertrain- und Getriebekomponenten.</li>
-<li>Cost-Reduction-Projekte fÃÂ¼r Opel.</li>
-<li>3D-Konstruktion, Zeichnungserstellung und technische Abstimmung in Siemens NX.</li>
-</ul>
-</div>
-</section>
-
-<section class="section">
-<h3>Ausbildung</h3>
-
-<div class="entry">
-<div class="entry-header">
-<h4>Master of Engineering Ã¢ÂÂ Product Development and Manufacturing</h4>
-<span>2016 Ã¢ÂÂ 2019</span>
-</div>
-<div class="company">Hochschule RheinMain</div>
-<ul>
-<li>Vertiefung in Produktentwicklung, Konstruktion und fertigungsnahe Entwicklung.</li>
-<li>Schwerpunkt auf dem Zusammenspiel zwischen Engineering, Entwicklungsmethoden und industrieller Umsetzung.</li>
-<li>Ausbau analytischer und technischer FÃÂ¤higkeiten im Bereich Entwicklungsprozesse und Produktionssysteme.</li>
-<li>Masterarbeit im technischen Umfeld der digitalen Produktentwicklung und systematischen Ausarbeitung komplexer ZusammenhÃÂ¤nge.</li>
-</ul>
-</div>
-
-<div class="entry">
-<div class="entry-header">
-<h4>Bachelor of Engineering Ã¢ÂÂ Maschinenbau</h4>
-<span>2010 Ã¢ÂÂ 2014</span>
-</div>
-<div class="company">Hochschule RheinMain</div>
-<ul>
-<li>Fundierte Ausbildung in Maschinenbau, Konstruktion, Technischer Mechanik, Werkstoffkunde und Fertigungstechnik.</li>
-<li>Schwerpunkte in Produktentwicklung, Fahrzeugtechnik und konstruktiver Auslegung.</li>
-<li>Praxisnahe Projektarbeiten mit technischem Fokus auf Entwicklung, Berechnung und Umsetzung mechanischer Systeme.</li>
-<li>Enge Verbindung von Theorie und Praxis durch technische Projekte, Praktika und konstruktive Aufgabenstellungen.</li>
-<li>Abschlussarbeit im ingenieurwissenschaftlichen Umfeld mit Fokus auf technische LÃÂ¶sungsausarbeitung und strukturierte Methodik.</li>
-</ul>
-</div>
-
-<div class="entry">
-<div class="entry-header">
-<h4>Studienvorbereitung / Deutscher Hochschulzugang</h4>
-<span>vor dem Studium</span>
-</div>
-<div class="company">Vorbereitung auf das Ingenieurstudium in Deutschland</div>
-<ul>
-<li>Sprachliche und fachliche Vorbereitung fÃÂ¼r das technische Studium in Deutschland.</li>
-<li>StÃÂ¤rkung der Grundlagen in Mathematik, Physik und technischem VerstÃÂ¤ndnis.</li>
-<li>Erfolgreicher ÃÂbergang in ein deutschsprachiges ingenieurwissenschaftliches Studium.</li>
-</ul>
-</div>
-</section>
-
-<section class="section">
-<h3>Weitere Erfahrung</h3>
-
-<div class="entry">
-<div class="entry-header">
-<h4>Formula Student Racing Team</h4>
-</div>
-<ul>
-<li>Konstruktion eines Rennwagens im studentischen Teamumfeld.</li>
-<li>Mitarbeit an technischen LÃÂ¶sungen in einem praxisnahen Entwicklungsprojekt.</li>
-<li>Erfahrung in Teamarbeit, Umsetzung, Verantwortung und technischem Denken unter Zeitdruck.</li>
-</ul>
+    <section class="sec" id="projekte">
+      <h2 class="sec-title"><span class="sec-ico">&#128640;</span>Ausgew&auml;hlte Projekte</h2>
+      <div class="proj-card">
+        <div class="proj-title">Projektleiter &ndash; Entwicklung &amp; Integration einer 48V Batterie</div>
+        <div class="proj-li">Leitung des Projekts E Grass 4.0 &ndash; Anpassung einer Batterie f&uuml;r einen elektrifizierten Rasenm&auml;her.</div>
+        <div class="proj-li">Koordination von Mechanik, Elektrik und Software; Ressourcen- und Budgetsteuerung.</div>
+        <div class="proj-li">Aufbau des Batterieprototyps; Funktions- und Systemtests beim Kunden.</div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-title">Formula Student &ndash; Racing Team Hochschule RheinMain</div>
+        <div class="proj-li">Konstruktive Auslegung eines Ein-Personen-Rennfahrzeugs im Studenten-Team.</div>
+        <div class="proj-li">Auslegung von Fahrwerk und Bremsanlage; CAD-Modelle und technische Konzepte.</div>
+      </div>
+    </section>
+  </div>
 </div>
 
-<div class="entry">
-<div class="entry-header">
-<h4>Werkstudent IC-Haus</h4>
-</div>
-<ul>
-<li>Aufbau elektronischer Baugruppen.</li>
-<li>Labortests, Analyse und UnterstÃÂ¼tzung technischer AblÃÂ¤ufe.</li>
-<li>FrÃÂ¼he Praxiserfahrung an der Schnittstelle von Technik, Genauigkeit und QualitÃÂ¤t.</li>
-</ul>
-</div>
-</section>
+<footer>Hamza Zemani &nbsp;&middot;&nbsp; Maschinenbauingenieur &nbsp;&middot;&nbsp; Projektmanagement &nbsp;&middot;&nbsp; Batteriesysteme</footer>
+<div class="hidden-link"><a href="ai.html">explore</a></div>
 
-<div class="grid-2">
+<script>
+// Scroll progress
+const bar=document.getElementById('progress-bar');
+window.addEventListener('scroll',()=>{bar.style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%';});
 
-<section class="section">
-<h3>Kenntnisse</h3>
-<div class="skill-item">Siemens NX</div>
-<div class="skill-item">CATIA V5</div>
-<div class="skill-item">ANSYS Workbench</div>
-<div class="skill-item">Teamcenter</div>
-<div class="skill-item">SAP</div>
-<div class="skill-item">Projektkoordination</div>
-<div class="skill-item">Technische Entwicklung</div>
-</section>
+// Cursor glow
+const cg=document.getElementById('cg');
+document.addEventListener('mousemove',e=>{cg.style.left=e.clientX+'px';cg.style.top=e.clientY+'px';});
 
-<section class="section">
-<h3>Sprachen</h3>
-<div class="skill-item">Deutsch Ã¢ÂÂ Muttersprachlich</div>
-<div class="skill-item">Arabisch Ã¢ÂÂ Muttersprache</div>
-<div class="skill-item">FranzÃÂ¶sisch Ã¢ÂÂ Verhandlungssicher</div>
-<div class="skill-item">Englisch Ã¢ÂÂ Verhandlungssicher</div>
-<div class="skill-item">IPMA Level D</div>
-</section>
+// Photo 3D tilt
+const pw=document.getElementById('pw');
+if(pw){
+  pw.addEventListener('mousemove',e=>{
+    const r=pw.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+    pw.style.transform=`perspective(600px) rotateY(${x*10}deg) rotateX(${-y*10}deg) scale(1.02)`;
+  });
+  pw.addEventListener('mouseleave',()=>{pw.style.transform='';});
+}
 
-</div>
+// Intersection Observer for reveal + skill bars
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      e.target.querySelectorAll('.sbar-fill').forEach(f=>{setTimeout(()=>{f.style.width=f.dataset.w+'%';},150);});
+    }
+  });
+},{threshold:.15});
+document.querySelectorAll('.entry,.edu-card,.proj-card,.scard').forEach(el=>obs.observe(el));
 
-</div>
+// Animated counters
+function animCount(el,target,dur=1400){
+  let n=0,step=target/(dur/16);
+  const t=setInterval(()=>{n+=step;if(n>=target){el.textContent=target+'+';clearInterval(t);}else{el.textContent=Math.floor(n);}},16);
+}
+const cobs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('[data-count]').forEach(el=>animCount(el,+el.dataset.count));cobs.unobserve(e.target);}});
+},{threshold:.5});
+document.querySelectorAll('.stat-grid').forEach(el=>cobs.observe(el));
 
-<div class="footer">
-Hamza Zemani ÃÂ· Maschinenbauingenieur ÃÂ· Projektmanagement ÃÂ· Batteriesysteme
-</div>
-
-<div class="hidden-link">
-<a href="ai.html">explore</a>
-</div>
-
+// Active nav
+const secs=document.querySelectorAll('section[id],.sec[id]');
+const navAs=document.querySelectorAll('.nav-links a:not(.nav-en-btn)');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  secs.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id;});
+  navAs.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+cur);});
+});
+</script>
 </body>
 </html>
