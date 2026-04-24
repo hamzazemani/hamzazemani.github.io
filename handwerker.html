@@ -1,179 +1,179 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hamza Zemani - Handwerk & Kurier</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hamza Zemani | Hilfe im Alltag</title>
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f5f5f5;
-            color: #222;
-        }
+<style>
+body {
+    margin:0;
+    font-family: Arial, sans-serif;
+    background:#f4f4f4;
+    color:#222;
+}
 
-        header {
-            background: #111;
-            color: white;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+/* HEADER */
+.header {
+    background:#0f172a;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
 
-        header h1 {
-            margin: 0;
-            font-size: 22px;
-        }
+/* HERO */
+.hero {
+    text-align:center;
+    padding:30px 20px;
+    background:white;
+}
 
-        nav a {
-            color: white;
-            margin-left: 20px;
-            text-decoration: none;
-        }
+.hero img {
+    width:130px;
+    border-radius:50%;
+    margin-bottom:10px;
+}
 
-        .hero {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 60px;
-            background: #222;
-            color: white;
-        }
+.hero h1 {
+    margin:10px 0;
+    font-size:24px;
+}
 
-        .hero-text {
-            max-width: 500px;
-        }
+.hero p {
+    font-size:16px;
+    color:#555;
+}
 
-        .hero img {
-            width: 300px;
-            border-radius: 12px;
-        }
+/* BUTTONS */
+.btn {
+    display:block;
+    margin:10px auto;
+    padding:15px;
+    background:#facc15;
+    color:black;
+    border-radius:10px;
+    text-decoration:none;
+    font-size:18px;
+    font-weight:bold;
+    width:90%;
+    text-align:center;
+}
 
-        .btn {
-            background: #f4b400;
-            color: black;
-            padding: 12px 20px;
-            display: inline-block;
-            margin-top: 20px;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: bold;
-        }
+/* SECTION */
+.section {
+    padding:20px;
+}
 
-        section {
-            padding: 50px;
-        }
+.card {
+    background:white;
+    padding:15px;
+    border-radius:10px;
+    margin-bottom:15px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
 
-        .services {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
+/* FORM */
+input, textarea {
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    border-radius:8px;
+    border:1px solid #ccc;
+    font-size:16px;
+}
 
-        .card {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
+button {
+    margin-top:15px;
+    padding:15px;
+    width:100%;
+    background:#0f172a;
+    color:white;
+    border:none;
+    border-radius:10px;
+    font-size:18px;
+}
 
-        .about {
-            display: flex;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .about img {
-            width: 250px;
-            border-radius: 10px;
-        }
-
-        footer {
-            background: #111;
-            color: white;
-            padding: 30px;
-            text-align: center;
-        }
-    </style>
+.footer {
+    text-align:center;
+    padding:20px;
+    background:#0f172a;
+    color:white;
+}
+</style>
 </head>
 
 <body>
 
-<header>
-    <h1>Hamza Zemani</h1>
-    <nav>
-        <a href="#leistungen">Leistungen</a>
-        <a href="#about">Über mich</a>
-        <a href="#kontakt">Kontakt</a>
-    </nav>
-</header>
+<div class="header">
+    <h2>Hilfe im Alltag – Hamza Zemani</h2>
+</div>
 
-<section class="hero">
-    <div class="hero-text">
-        <h2>Handwerkliche Dienstleistungen & Kurierfahrten</h2>
-        <p>Zuverlässig. Schnell. Flexibel. Ich unterstütze Sie bei Reparaturen, Montagearbeiten und Transporten.</p>
-        <a href="#kontakt" class="btn">Jetzt kontaktieren</a>
-    </div>
-
+<div class="hero">
     <img src="profil.jpg" alt="Hamza">
-</section>
+    <h1>Zuverlässige Hilfe für Zuhause</h1>
+    <p>Ich unterstütze Sie bei kleinen Arbeiten im Haushalt, Garten und Alltag.</p>
 
-<section id="leistungen">
-    <h2>Meine Leistungen</h2>
+    <a href="tel:01785646767" class="btn">📞 Jetzt anrufen</a>
+    <a href="mailto:Hamza.Zemani@gmx.de" class="btn">📧 E-Mail senden</a>
+    <a href="#kontaktformular" class="btn">📝 Nachricht schreiben</a>
+</div>
 
-    <div class="services">
-        <div class="card">
-            <h3>Reparaturen & Montage</h3>
-            <p>Kleine Reparaturen im Haushalt, Möbelaufbau, Montagen und mehr.</p>
-        </div>
+<div class="section">
 
-        <div class="card">
-            <h3>Handwerkliche Hilfe</h3>
-            <p>Unterstützung bei Arbeiten im Haus oder Garten – flexibel und sauber.</p>
-        </div>
-
-        <div class="card">
-            <h3>Kurierfahrten</h3>
-            <p>Schnelle und zuverlässige Lieferungen von Paketen oder Dokumenten.</p>
-        </div>
-
-        <div class="card">
-            <h3>Sonstige Dienste</h3>
-            <p>Individuelle Unterstützung nach Absprache.</p>
-        </div>
+    <div class="card">
+        <h3>🔧 Handwerkliche Hilfe im Haushalt</h3>
+        <p>Möbel aufbauen, Lampen befestigen, kleine Reparaturen, Hilfe bei handwerklichen Arbeiten.</p>
     </div>
-</section>
 
-<section id="about" class="about">
-    <img src="profil.jpg" alt="Hamza">
-
-    <div>
-        <h2>Über mich</h2>
-        <p>
-            Ich bin zuverlässig, pünktlich und arbeite sauber.  
-            Mein Ziel ist es, jede Aufgabe professionell und schnell zu erledigen.
-        </p>
-
-        <ul>
-            <li>✔ Zuverlässig</li>
-            <li>✔ Saubere Arbeit</li>
-            <li>✔ Faire Preise</li>
-        </ul>
+    <div class="card">
+        <h3>🪑 Möbelaufbau</h3>
+        <p>Ich baue Möbel schnell und sauber für Sie auf – egal ob Schrank, Bett oder Regal.</p>
     </div>
-</section>
 
-<section id="kontakt">
-    <h2>Kontakt</h2>
-    <p>📞 Telefon: 0176 64838898</p>
-    <p>📧 E-Mail: zemani.hamza@outlook.de</p>
-    <p>📍 Einsatzgebiet: München & Umgebung</p>
-</section>
+    <div class="card">
+        <h3>🌿 Gartenarbeit</h3>
+        <p>Rasen mähen, Unkraut entfernen, kleine Gartenarbeiten und Pflege rund ums Haus.</p>
+    </div>
 
-<footer>
-    <p>© 2026 Hamza Zemani – Handwerk & Kurier</p>
-</footer>
+    <div class="card">
+        <h3>🛒 Einkäufe & Besorgungen</h3>
+        <p>Ich erledige Einkäufe oder bringe Ihnen alles bequem nach Hause.</p>
+    </div>
+
+    <div class="card">
+        <h3>📦 Pakete & Fahrten</h3>
+        <p>Abholen und liefern von Paketen, Dokumenten oder Einkäufen.</p>
+    </div>
+
+    <div class="card">
+        <h3>❤️ Unterstützung für ältere Menschen</h3>
+        <p>Freundliche Hilfe im Alltag – zuverlässig, geduldig und respektvoll.</p>
+    </div>
+
+</div>
+
+<!-- KONTAKT -->
+<div class="section" id="kontaktformular">
+    <div class="card">
+        <h3>Kontaktformular</h3>
+
+        <form>
+            <input type="text" placeholder="Ihr Name" required>
+            <input type="tel" placeholder="Telefonnummer">
+            <input type="email" placeholder="E-Mail">
+            <textarea rows="4" placeholder="Ihre Nachricht"></textarea>
+
+            <button type="submit">Nachricht senden</button>
+        </form>
+
+    </div>
+</div>
+
+<div class="footer">
+    <p>📞 01785646767</p>
+    <p>📧 Hamza.Zemani@gmx.de</p>
+    <p>📍 Karlsfeld & Umgebung</p>
+</div>
 
 </body>
 </html>
