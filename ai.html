@@ -1,193 +1,138 @@
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Hamza AI Platform</title>
-
+<title>Hamza · AI Platform</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-
-body{
-margin:0;
-font-family:Arial;
-background:#0f172a;
-color:white;
-}
-
-.navbar{
-background:#020617;
-padding:15px 40px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
-
-.logo{
-font-size:20px;
-font-weight:bold;
-}
-
-.nav-links a{
-color:white;
-text-decoration:none;
-margin-left:25px;
-font-size:16px;
-}
-
-.cv-button{
-background:#22c55e;
-padding:8px 14px;
-border-radius:6px;
-}
-
-.hero{
-text-align:center;
-padding:120px 20px;
-}
-
-.hero h1{
-font-size:48px;
-}
-
-.hero p{
-font-size:20px;
-color:#cbd5f5;
-}
-
-.container{
-max-width:1000px;
-margin:auto;
-padding:40px 20px;
-}
-
-.cards{
-display:flex;
-gap:30px;
-flex-wrap:wrap;
-justify-content:center;
-}
-
-.card{
-background:#1e293b;
-padding:30px;
-border-radius:10px;
-width:250px;
-text-align:center;
-}
-
-.card p{
-color:#cbd5f5;
-}
-
-.button{
-display:inline-block;
-margin-top:15px;
-padding:12px 20px;
-border-radius:8px;
-text-decoration:none;
-color:white;
-}
-
-.ai{
-background:#22c55e;
-}
-
-.n8n{
-background:#3b82f6;
-}
-
-.about{
-background:#f59e0b;
-}
-
-.game{
-background:#ec4899;
-}
-
-footer{
-text-align:center;
-padding:30px;
-color:#94a3b8;
-}
-
+:root{--bg:#070e1c;--bg2:#0d1829;--bg3:#111f35;--border:#1a2e4a;--text:#dde6f0;--muted:#5a7a99;--cyan:#00d4ff;--violet:#a78bfa;--gold:#fbbf24;--white:#fff;--green:#10b981;}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
+.grid-bg{position:fixed;inset:0;z-index:0;background-image:linear-gradient(rgba(0,212,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,.04) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,#000 40%,transparent 100%);animation:gridPulse 8s ease-in-out infinite;}
+@keyframes gridPulse{0%,100%{opacity:.6;}50%{opacity:1;}}
+.radial-glow{position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 50% 40% at 50% 0%,rgba(0,212,255,.07) 0%,transparent 70%),radial-gradient(ellipse 40% 30% at 20% 80%,rgba(167,139,250,.06) 0%,transparent 60%),radial-gradient(ellipse 40% 30% at 80% 70%,rgba(251,191,36,.04) 0%,transparent 60%);}
+.cursor-glow{position:fixed;width:500px;height:500px;border-radius:50%;pointer-events:none;z-index:0;background:radial-gradient(circle,rgba(0,212,255,.04) 0%,transparent 70%);transform:translate(-50%,-50%);transition:left .08s,top .08s;}
+nav{position:fixed;top:2px;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:58px;background:rgba(7,14,28,.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:16px;color:var(--white);}
+.nav-logo span{color:var(--cyan);}.nav-logo .dot{color:var(--violet);}
+.nav-badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:var(--green);background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.25);padding:4px 12px;border-radius:100px;letter-spacing:.5px;}
+.nav-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);animation:blink 2s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:.3;}}
+.nav-right{display:flex;align-items:center;gap:16px;}
+.nav-back{font-size:13px;color:var(--muted);text-decoration:none;font-weight:500;transition:color .2s;display:flex;align-items:center;gap:6px;}
+.nav-back:hover{color:var(--cyan);}
+.hero{position:relative;z-index:1;text-align:center;padding:140px 20px 80px;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;color:var(--cyan);text-transform:uppercase;letter-spacing:2px;background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.2);padding:6px 18px;border-radius:100px;margin-bottom:28px;}
+.hero-eyebrow::before{content:'⬡';font-size:14px;}
+.hero-title{font-family:'Syne',sans-serif;font-size:72px;font-weight:800;line-height:1.0;letter-spacing:-2px;color:var(--white);margin-bottom:12px;}
+.hero-title .gradient{background:linear-gradient(135deg,var(--cyan) 0%,var(--violet) 60%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;background-size:200% auto;animation:shimmer 4s linear infinite;}
+@keyframes shimmer{0%{background-position:0% center;}100%{background-position:200% center;}}
+.hero-sub{font-size:17px;color:var(--muted);margin-bottom:50px;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;}
+.hero-sub .sep{color:var(--border);}
+.cards{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 30px 60px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:24px;padding:36px 30px;display:flex;flex-direction:column;gap:16px;position:relative;overflow:hidden;transition:all .35s;cursor:default;}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;transition:opacity .3s;}
+.card.cyan::before{background:linear-gradient(90deg,transparent,var(--cyan),transparent);}
+.card.violet::before{background:linear-gradient(90deg,transparent,var(--violet),transparent);}
+.card.gold::before{background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+.card::after{content:'';position:absolute;width:200px;height:200px;border-radius:50%;top:-60px;right:-60px;opacity:0;transition:opacity .4s;filter:blur(60px);pointer-events:none;}
+.card.cyan::after{background:var(--cyan);}
+.card.violet::after{background:var(--violet);}
+.card.gold::after{background:var(--gold);}
+.card:hover{transform:translateY(-6px);}
+.card.cyan:hover{border-color:rgba(0,212,255,.3);box-shadow:0 20px 60px rgba(0,0,0,.4),0 0 40px rgba(0,212,255,.08);}
+.card.violet:hover{border-color:rgba(167,139,250,.3);box-shadow:0 20px 60px rgba(0,0,0,.4),0 0 40px rgba(167,139,250,.08);}
+.card.gold:hover{border-color:rgba(251,191,36,.3);box-shadow:0 20px 60px rgba(0,0,0,.4),0 0 40px rgba(251,191,36,.08);}
+.card:hover::after{opacity:.06;}
+.card-icon{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;position:relative;z-index:1;}
+.card.cyan .card-icon{background:rgba(0,212,255,.1);border:1px solid rgba(0,212,255,.2);}
+.card.violet .card-icon{background:rgba(167,139,250,.1);border:1px solid rgba(167,139,250,.2);}
+.card.gold .card-icon{background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.2);}
+.card-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;position:relative;z-index:1;}
+.card.cyan .card-label{color:var(--cyan);}
+.card.violet .card-label{color:var(--violet);}
+.card.gold .card-label{color:var(--gold);}
+.card-title{font-family:'Syne',sans-serif;font-size:24px;font-weight:700;color:var(--white);position:relative;z-index:1;line-height:1.2;}
+.card-desc{font-size:14px;color:#7a9ab8;line-height:1.7;position:relative;z-index:1;flex:1;}
+.card-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 24px;border-radius:12px;font-size:14px;font-weight:600;font-family:'Inter',sans-serif;text-decoration:none;transition:all .25s;position:relative;z-index:1;cursor:pointer;border:none;margin-top:auto;}
+.card.cyan .card-btn{background:rgba(0,212,255,.12);border:1px solid rgba(0,212,255,.25);color:var(--cyan);}
+.card.cyan .card-btn:hover{background:var(--cyan);color:#050a12;box-shadow:0 8px 24px rgba(0,212,255,.35);}
+.card.violet .card-btn{background:rgba(167,139,250,.12);border:1px solid rgba(167,139,250,.25);color:var(--violet);}
+.card.violet .card-btn:hover{background:var(--violet);color:#050a12;box-shadow:0 8px 24px rgba(167,139,250,.35);}
+.card.gold .card-btn{background:rgba(251,191,36,.12);border:1px solid rgba(251,191,36,.25);color:var(--gold);}
+.card.gold .card-btn:hover{background:var(--gold);color:#050a12;box-shadow:0 8px 24px rgba(251,191,36,.35);}
+.card-arrow{transition:transform .2s;}
+.card-btn:hover .card-arrow{transform:translateX(4px);}
+.status-strip{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 30px 60px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+.status-item{display:flex;align-items:center;gap:8px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:10px 16px;font-size:12px;color:var(--muted);}
+.status-dot{width:6px;height:6px;border-radius:50%;}
+.status-dot.on{background:var(--green);box-shadow:0 0 8px var(--green);animation:blink 2s infinite;}
+.status-dot.off{background:var(--gold);}
+footer{position:relative;z-index:1;border-top:1px solid var(--border);text-align:center;padding:24px 20px;color:var(--muted);font-size:12px;}
+footer a{color:var(--muted);text-decoration:none;transition:color .2s;}
+footer a:hover{color:var(--cyan);}
+@media(max-width:900px){.cards{grid-template-columns:1fr;}.hero-title{font-size:48px;}nav{padding:0 20px;}}
+@media(max-width:600px){.hero-title{font-size:36px;}.hero{padding:110px 20px 60px;}}
 </style>
-
 </head>
-
 <body>
-
-<div class="navbar">
-
-<div class="logo">
-Hamza AI Platform
-</div>
-
-<div class="nav-links">
-<a href="index.html" class="cv-button">Lebenslauf</a>
-</div>
-
-</div>
-
-<div class="hero">
-
-<h1>Lokale AI Plattform</h1>
-
-<p>AI Chat · Automationen · Tools</p>
-
-</div>
-
-<div class="container">
-
+<div class="grid-bg"></div>
+<div class="radial-glow"></div>
+<div class="cursor-glow" id="cg"></div>
+<nav>
+  <span class="nav-logo">Hamza<span>.</span><span class="dot">AI</span></span>
+  <div class="nav-right">
+    <span class="nav-badge">Server Online</span>
+    <a href="index.html" class="nav-back">← Lebenslauf</a>
+  </div>
+</nav>
+<section class="hero">
+  <div class="hero-eyebrow">Lokale KI Infrastruktur</div>
+  <h1 class="hero-title"><span class="gradient">AI Platform</span></h1>
+  <div class="hero-sub">
+    <span>AI Chat</span><span class="sep">·</span>
+    <span>Automationen</span><span class="sep">·</span>
+    <span>Tools</span><span class="sep">·</span>
+    <span>Local Server</span>
+  </div>
+</section>
 <div class="cards">
-
-<div class="card">
-
-<h3>AI Chat</h3>
-
-<p>Chatte mit deinem lokalen KI Modell</p>
-
-<a href="http://178.104.9.173:3000" class="button ai" target="_blank">
-Open AI Chat
-</a>
-
+  <div class="card cyan">
+    <div class="card-icon">🤖</div>
+    <div class="card-label">AI Chat</div>
+    <div class="card-title">Open WebUI</div>
+    <p class="card-desc">Chatte mit deinem lokalen KI-Modell. Vollständige Kontrolle über deine Daten – kein Cloud-Zwang, keine Limits.</p>
+    <a href="http://178.104.9.173:3000/" target="_blank" class="card-btn">Open AI Chat <span class="card-arrow">→</span></a>
+  </div>
+  <div class="card violet">
+    <div class="card-icon">⚡</div>
+    <div class="card-label">Automationen</div>
+    <div class="card-title">n8n Workflows</div>
+    <p class="card-desc">Automatisiere deine Workflows mit n8n. Verbinde Tools, APIs und KI-Modelle in einem visuellen Editor.</p>
+    <a href="http://178.104.9.173:5678/" target="_blank" class="card-btn">Open n8n <span class="card-arrow">→</span></a>
+  </div>
+  <div class="card gold">
+    <div class="card-icon">🐱</div>
+    <div class="card-label">Fun</div>
+    <div class="card-title">Katzen-Chaos</div>
+    <p class="card-desc">Ein kleines lustiges Spiel – weil auch KI-Entwickler manchmal eine Pause brauchen. Viel Spaß!</p>
+    <a href="katzen-chaos.html" class="card-btn">Spiel starten <span class="card-arrow">→</span></a>
+  </div>
 </div>
-
-<div class="card">
-
-<h3>Automationen</h3>
-
-<p>Öffne deine n8n Workflows</p>
-
-<a href="http://178.104.9.173:5678" class="button n8n" target="_blank">
-Open n8n
-</a>
-
+<div class="status-strip">
+  <div class="status-item"><div class="status-dot on"></div><span>Open WebUI · Port 3000</span></div>
+  <div class="status-item"><div class="status-dot on"></div><span>n8n · Port 5678</span></div>
+  <div class="status-item"><div class="status-dot off"></div><span>Server · 178.104.9.173</span></div>
 </div>
-
-<div class="card">
-
-<h3>Katzen-Spiel</h3>
-
-<p>Ein kleines lustiges Spiel mit Katzen</p>
-
-<a href="katzen-chaos.html" class="button game">
-Spiel öffnen
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-<footer>
-
-Hamza AI Platform · Local AI Server
-
-</footer>
-
+<footer>Hamza AI Platform &nbsp;·&nbsp; Local AI Server &nbsp;·&nbsp; <a href="index.html">Zurück zum Lebenslauf</a></footer>
+<script>
+const cg=document.getElementById('cg');
+document.addEventListener('mousemove',e=>{cg.style.left=e.clientX+'px';cg.style.top=e.clientY+'px';});
+const cards=document.querySelectorAll('.card');
+const obs=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>{e.target.style.opacity='1';e.target.style.transform='translateY(0)';},i*120);}});},{threshold:.1});
+cards.forEach(c=>{c.style.opacity='0';c.style.transform='translateY(30px)';c.style.transition='opacity .5s ease, transform .5s ease, border-color .35s, box-shadow .35s';obs.observe(c);});
+</script>
 </body>
-
 </html>
