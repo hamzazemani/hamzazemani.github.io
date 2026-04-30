@@ -1,0 +1,1637 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business English – Useful Language</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #f7f4ef;
+    --cream-dark: #ede9e1;
+    --ink: #1a1714;
+    --ink-mid: #4a4540;
+    --ink-light: #8a857e;
+    --gold: #b8860b;
+    --gold-light: #f5e8c0;
+    --gold-mid: #e8c84a;
+    --teal: #1a5c52;
+    --teal-light: #d6ece8;
+    --red: #8b1a1a;
+    --red-light: #f5dada;
+    --blue: #1a3a5c;
+    --blue-light: #d6e4f0;
+    --border: rgba(26,23,20,0.12);
+    --shadow: 0 2px 12px rgba(26,23,20,0.08);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── TOP NAV ── */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--ink);
+    color: #f7f4ef;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+    gap: 1rem;
+  }
+  .topbar-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .topbar-brand span { color: var(--gold-mid); }
+  .search-wrap {
+    position: relative;
+    flex: 1;
+    max-width: 380px;
+  }
+  .search-wrap input {
+    width: 100%;
+    padding: 7px 14px 7px 36px;
+    border-radius: 6px;
+    border: none;
+    background: rgba(255,255,255,0.1);
+    color: #f7f4ef;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: background 0.2s;
+  }
+  .search-wrap input::placeholder { color: rgba(247,244,239,0.45); }
+  .search-wrap input:focus { background: rgba(255,255,255,0.18); }
+  .search-icon {
+    position: absolute;
+    left: 11px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  .mode-btns { display: flex; gap: 6px; flex-shrink: 0; }
+  .mode-btn {
+    padding: 6px 14px;
+    border-radius: 5px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: transparent;
+    color: rgba(247,244,239,0.7);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .mode-btn.active, .mode-btn:hover {
+    background: rgba(255,255,255,0.15);
+    color: #f7f4ef;
+    border-color: rgba(255,255,255,0.4);
+  }
+  .mode-btn.active {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* ── LAYOUT ── */
+  .layout { display: flex; flex: 1; }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    width: 220px;
+    flex-shrink: 0;
+    background: var(--cream-dark);
+    border-right: 1px solid var(--border);
+    padding: 1.5rem 0;
+    position: sticky;
+    top: 56px;
+    height: calc(100vh - 56px);
+    overflow-y: auto;
+  }
+  .sidebar-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    padding: 0 1.25rem;
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+  }
+  .sidebar-label:first-child { margin-top: 0; }
+  .nav-item {
+    display: block;
+    padding: 9px 1.25rem;
+    font-size: 13px;
+    color: var(--ink-mid);
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    transition: all 0.15s;
+    cursor: pointer;
+    background: none;
+    border-right: none;
+    border-top: none;
+    border-bottom: none;
+    width: 100%;
+    text-align: left;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .nav-item:hover { color: var(--ink); background: rgba(26,23,20,0.04); }
+  .nav-item.active { color: var(--ink); border-left-color: var(--gold); font-weight: 500; background: rgba(184,134,11,0.07); }
+  .nav-item .unit-num {
+    display: inline-block;
+    width: 22px;
+    height: 18px;
+    background: var(--gold-light);
+    color: var(--gold);
+    font-size: 10px;
+    font-weight: 500;
+    border-radius: 3px;
+    text-align: center;
+    line-height: 18px;
+    margin-right: 7px;
+    flex-shrink: 0;
+  }
+
+  /* ── MAIN ── */
+  main {
+    flex: 1;
+    padding: 2.5rem 2.5rem 4rem;
+    max-width: 860px;
+  }
+
+  /* BROWSE MODE */
+  .unit-section { margin-bottom: 4rem; }
+  .unit-section:last-child { margin-bottom: 0; }
+
+  .unit-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1.5px solid var(--ink);
+  }
+  .unit-num-badge {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    color: var(--gold);
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .unit-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    color: var(--ink);
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .phrase-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1rem;
+  }
+
+  .phrase-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem;
+    transition: box-shadow 0.2s, transform 0.15s;
+    cursor: default;
+  }
+  .phrase-card:hover { box-shadow: var(--shadow); transform: translateY(-1px); }
+
+  .phrase-card-title {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .phrase-card-title::before {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 2px;
+    background: var(--gold);
+    border-radius: 1px;
+  }
+
+  .phrase-list { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+  .phrase-item {
+    font-size: 14px;
+    color: var(--ink-mid);
+    line-height: 1.55;
+    padding: 5px 8px;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    transition: all 0.15s;
+    cursor: pointer;
+  }
+  .phrase-item:hover {
+    background: var(--gold-light);
+    color: var(--ink);
+    border-color: rgba(184,134,11,0.2);
+  }
+  .phrase-item.highlighted {
+    background: var(--gold-light);
+    border-color: var(--gold);
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* SEARCH RESULTS */
+  #search-results { display: none; }
+  .search-result-item {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 8px;
+    transition: box-shadow 0.15s;
+  }
+  .search-result-item:hover { box-shadow: var(--shadow); }
+  .search-result-phrase { font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
+  .search-result-phrase mark { background: var(--gold-mid); color: var(--ink); border-radius: 2px; padding: 0 2px; }
+  .search-result-meta { font-size: 12px; color: var(--ink-light); }
+  .no-results { color: var(--ink-light); font-size: 14px; padding: 2rem 0; text-align: center; }
+
+  /* FLASHCARD MODE */
+  #flashcard-mode { display: none; }
+  .fc-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .fc-title { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600; }
+  .fc-progress-wrap { display: flex; align-items: center; gap: 10px; }
+  .fc-progress-bar {
+    width: 180px;
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .fc-progress-fill {
+    height: 100%;
+    background: var(--gold);
+    border-radius: 2px;
+    transition: width 0.3s;
+  }
+  .fc-progress-text { font-size: 13px; color: var(--ink-light); }
+
+  .fc-unit-select {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 2rem;
+  }
+  .fc-unit-btn {
+    padding: 5px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: #fff;
+    font-size: 12px;
+    color: var(--ink-mid);
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.15s;
+  }
+  .fc-unit-btn:hover { border-color: var(--gold); color: var(--ink); }
+  .fc-unit-btn.active { background: var(--gold); border-color: var(--gold); color: var(--ink); font-weight: 500; }
+
+  .fc-card-area {
+    perspective: 1000px;
+    margin-bottom: 1.5rem;
+    cursor: pointer;
+  }
+  .fc-card-inner {
+    position: relative;
+    min-height: 240px;
+    transform-style: preserve-3d;
+    transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+    border-radius: 14px;
+  }
+  .fc-card-inner.flipped { transform: rotateY(180deg); }
+  .fc-face {
+    position: absolute;
+    inset: 0;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    text-align: center;
+    min-height: 240px;
+  }
+  .fc-front {
+    background: var(--ink);
+    border: 1px solid var(--ink);
+  }
+  .fc-back {
+    background: var(--gold-light);
+    border: 1px solid rgba(184,134,11,0.3);
+    transform: rotateY(180deg);
+  }
+  .fc-face-label {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+  }
+  .fc-front .fc-face-label { color: #f7f4ef; }
+  .fc-back .fc-face-label { color: var(--gold); }
+  .fc-phrase {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    line-height: 1.45;
+    font-weight: 400;
+  }
+  .fc-front .fc-phrase { color: #f7f4ef; }
+  .fc-back .fc-phrase { color: var(--ink); }
+  .fc-sub {
+    font-size: 13px;
+    margin-top: 0.75rem;
+    opacity: 0.6;
+  }
+  .fc-front .fc-sub { color: #f7f4ef; }
+  .fc-back .fc-sub { color: var(--ink-mid); }
+  .fc-hint {
+    font-size: 11px;
+    opacity: 0.35;
+    margin-top: 1.5rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .fc-front .fc-hint { color: #f7f4ef; }
+  .fc-back .fc-hint { color: var(--ink); }
+
+  .fc-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .fc-nav { display: flex; gap: 8px; }
+  .fc-btn {
+    padding: 9px 22px;
+    border-radius: 7px;
+    border: 1px solid var(--border);
+    background: #fff;
+    font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--ink);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .fc-btn:hover:not(:disabled) { background: var(--cream-dark); border-color: var(--ink-mid); }
+  .fc-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+  .fc-btn.primary { background: var(--ink); color: #f7f4ef; border-color: var(--ink); }
+  .fc-btn.primary:hover { background: var(--ink-mid); }
+  .fc-shuffle {
+    font-size: 13px;
+    color: var(--ink-light);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .fc-shuffle:hover { color: var(--ink); }
+
+  /* QUIZ MODE */
+  #quiz-mode { display: none; }
+  .quiz-header { margin-bottom: 2rem; }
+  .quiz-header h2 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600; margin-bottom: 0.25rem; }
+  .quiz-header p { font-size: 13px; color: var(--ink-light); }
+  .quiz-unit-select {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 1.5rem;
+  }
+  .q-progress {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+  }
+  .q-bar { flex: 1; height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
+  .q-fill { height: 100%; background: var(--teal); border-radius: 2px; transition: width 0.4s; }
+  .q-text { font-size: 13px; color: var(--ink-light); white-space: nowrap; }
+  .q-score-badge {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--teal);
+    background: var(--teal-light);
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+
+  .q-question {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.75rem;
+    margin-bottom: 1.25rem;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+  }
+  .q-question .q-unit-tag {
+    display: inline-block;
+    padding: 3px 10px;
+    background: var(--gold-light);
+    color: var(--gold);
+    border-radius: 20px;
+    font-size: 11px;
+    margin-bottom: 0.75rem;
+  }
+  .q-question .q-phrase {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: var(--ink);
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
+    line-height: 1.5;
+  }
+  .q-options { display: grid; gap: 8px; margin-bottom: 1.25rem; }
+  .q-opt {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--ink-mid);
+    font-family: 'DM Sans', sans-serif;
+    text-align: left;
+    transition: all 0.15s;
+  }
+  .q-opt:hover:not(:disabled) { border-color: var(--gold); color: var(--ink); background: var(--gold-light); }
+  .q-opt:disabled { cursor: default; }
+  .q-opt.correct { border-color: var(--teal); background: var(--teal-light); color: var(--teal); font-weight: 500; }
+  .q-opt.wrong { border-color: var(--red); background: var(--red-light); color: var(--red); }
+  .q-opt .opt-letter {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 1px solid currentColor;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    flex-shrink: 0;
+    opacity: 0.6;
+  }
+
+  .q-next-row { display: flex; justify-content: space-between; align-items: center; }
+
+  .q-done {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+  }
+  .q-done-score { font-size: 64px; font-weight: 300; font-family: 'Playfair Display', serif; color: var(--ink); line-height: 1; }
+  .q-done-total { font-size: 16px; color: var(--ink-light); margin-bottom: 1.5rem; }
+  .q-done-label { font-size: 14px; color: var(--ink-mid); margin-bottom: 2rem; }
+  .q-done-bar { width: 200px; height: 8px; background: var(--border); border-radius: 4px; margin: 0 auto 2rem; overflow: hidden; }
+  .q-done-fill { height: 100%; border-radius: 4px; }
+
+  .hidden { display: none !important; }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+  @media (max-width: 700px) {
+    .sidebar { display: none; }
+    main { padding: 1.5rem 1rem 3rem; }
+    .topbar { padding: 0 1rem; }
+    .topbar-brand { font-size: 15px; }
+    .phrase-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-brand">Business <span>English</span></div>
+  <div class="search-wrap">
+    <svg class="search-icon" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" id="search-input" placeholder="Phrase suchen …" oninput="handleSearch(this.value)">
+  </div>
+  <div class="mode-btns">
+    <button class="mode-btn active" onclick="setMode('browse')">Übersicht</button>
+    <button class="mode-btn" onclick="setMode('flashcard')">Karten</button>
+    <button class="mode-btn" onclick="setMode('quiz')">Quiz</button>
+  </div>
+</div>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-label">Einheiten</div>
+    <button class="nav-item active" onclick="scrollToUnit('u1')"><span class="unit-num">1</span>Opinions &amp; Meetings</button>
+    <button class="nav-item" onclick="scrollToUnit('u2')"><span class="unit-num">2</span>Travel</button>
+    <button class="nav-item" onclick="scrollToUnit('u3')"><span class="unit-num">3</span>Change</button>
+    <button class="nav-item" onclick="scrollToUnit('u4')"><span class="unit-num">4</span>Organization</button>
+    <button class="nav-item" onclick="scrollToUnit('u5')"><span class="unit-num">5</span>Advertising</button>
+    <button class="nav-item" onclick="scrollToUnit('u6')"><span class="unit-num">6</span>Money</button>
+    <button class="nav-item" onclick="scrollToUnit('u8')"><span class="unit-num">8</span>Human Resources</button>
+    <button class="nav-item" onclick="scrollToUnit('u9')"><span class="unit-num">9</span>Int. Markets</button>
+    <button class="nav-item" onclick="scrollToUnit('u10')"><span class="unit-num">10</span>Ethics</button>
+    <button class="nav-item" onclick="scrollToUnit('u11')"><span class="unit-num">11</span>Leadership</button>
+    <button class="nav-item" onclick="scrollToUnit('u12')"><span class="unit-num">12</span>Competition</button>
+  </aside>
+
+  <main id="main-content">
+
+    <!-- SEARCH RESULTS -->
+    <div id="search-results"></div>
+
+    <!-- BROWSE MODE -->
+    <div id="browse-mode">
+
+      <div class="unit-section" id="u1">
+        <div class="unit-header">
+          <span class="unit-num-badge">Unit 1</span>
+          <h2 class="unit-title">Opinions &amp; Meetings</h2>
+        </div>
+        <div class="phrase-grid">
+          <div class="phrase-card">
+            <div class="phrase-card-title">Asking for Opinions</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">How do you feel about that?</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">What do you think?</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">What's your view?</li>
+            </ul>
+          </div>
+          <div class="phrase-card">
+            <div class="phrase-card-title">Giving Opinions</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">I think / I don't think that's a good idea.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">In my opinion, we need new products.</li>
+            </ul>
+          </div>
+          <div class="phrase-card">
+            <div class="phrase-card-title">Agreeing</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">That's true.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">I agree.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Absolutely.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Exactly.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">I think so, too.</li>
+            </ul>
+          </div>
+          <div class="phrase-card">
+            <div class="phrase-card-title">Disagreeing</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">I see / know what you mean, but I think there's a problem.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">I'm not so sure.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Maybe, but that's not enough.</li>
+            </ul>
+          </div>
+          <div class="phrase-card">
+            <div class="phrase-card-title">Making Suggestions</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">I think we should reduce our prices.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">How about a special promotion?</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Why don't we talk to the big stores?</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Maybe / Perhaps we could offer incentives.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="unit-section" id="u2">
+        <div class="unit-header">
+          <span class="unit-num-badge">Unit 2</span>
+          <h2 class="unit-title">Travel</h2>
+        </div>
+        <div class="phrase-grid">
+          <div class="phrase-card">
+            <div class="phrase-card-title">Answering the Phone</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">Hello, Carla Rodríguez speaking.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Good morning, Tiger Ltd.</li>
+            </ul>
+          </div>
+          <div class="phrase-card">
+            <div class="phrase-card-title">Making Contact</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">I'd like to speak to Martin Krause, please.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Could I have the sales department, please?</li>
+            </ul>
+          </div>
+          <div class="phrase-card">
+            <div class="phrase-card-title">Identifying Yourself</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">This is / My name's Karin Nordby.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Karin Nordby speaking.</li>
+            </ul>
+          </div>
+          <div class="phrase-card">
+            <div class="phrase-card-title">Stating Your Purpose</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">I'm calling about …</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">The reason I'm calling is …</li>
+            </ul>
+          </div>
+          <div class="phrase-card">
+            <div class="phrase-card-title">Making Arrangements</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">Could we meet on Monday at 11:00?</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">How / What about June 12th?</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Is 9:30 convenient / OK?</li>
+            </ul>
+          </div>
+          <div class="phrase-card">
+            <div class="phrase-card-title">Responding</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">That's fine / OK for me.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Sorry, I can't make it then.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">No problem.</li>
+            </ul>
+          </div>
+          <div class="phrase-card">
+            <div class="phrase-card-title">Closing</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">Good. So, I'll see you on the 8th.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Thank you. Goodbye.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Right. / OK, then.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">That's great, I'll see you …</li>
+            </ul>
+          </div>
+          <div class="phrase-card">
+            <div class="phrase-card-title">Changing Arrangements</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">I'm afraid I can't come on Friday. I'm very busy that day.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">I'm sorry, I can't make it on Tuesday. I've got something on that morning.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">We've got an appointment for ten o'clock, but I'm afraid something's come up.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Could we fix another time?</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="unit-section" id="u3">
+        <div class="unit-header">
+          <span class="unit-num-badge">Unit 3</span>
+          <h2 class="unit-title">Change</h2>
+        </div>
+        <div class="phrase-grid">
+          <div class="phrase-card">
+            <div class="phrase-card-title">Starting</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">OK, let's get down to business.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Right, can we start, please?</li>
+            </ul>
+          </div>
+          <div class="phrase-card">
+            <div class="phrase-card-title">Setting Objectives</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">The purpose of this meeting is …</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">The aims of this meeting are …</li>
+            </ul>
+          </div>
+          <div class="phrase-card">
+            <div class="phrase-card-title">Dealing with Interruptions</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">Could you let him finish, please?</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Could you just hang on a moment, please?</li>
+            </ul>
+          </div>
+          <div class="phrase-card">
+            <div class="phrase-card-title">Keeping to the Point</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">I'm not sure that's relevant.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Perhaps we could get back to the point.</li>
+            </ul>
+          </div>
+          <div class="phrase-card">
+            <div class="phrase-card-title">Speeding Up</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">I think we should move on now.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Can we come back to that?</li>
+            </ul>
+          </div>
+          <div class="phrase-card">
+            <div class="phrase-card-title">Slowing Down</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">Hold on, we need to look at this in more detail.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">I think we should discuss this a bit more.</li>
+            </ul>
+          </div>
+          <div class="phrase-card">
+            <div class="phrase-card-title">Summarising</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">OK, let's go over what we've agreed.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Right, to sum up then …</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="unit-section" id="u4">
+        <div class="unit-header">
+          <span class="unit-num-badge">Unit 4</span>
+          <h2 class="unit-title">Organization</h2>
+        </div>
+        <div class="phrase-grid">
+          <div class="phrase-card">
+            <div class="phrase-card-title">Greetings &amp; Responding</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">Hello, … . Great to see you again.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Hi, … . How are you?</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">How's everything going?</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Fine, thanks.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Not too bad, thanks.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Pleased to meet you.</li>
+            </ul>
+          </div>
+          <div class="phrase-card">
+            <div class="phrase-card-title">Introducing Yourself</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">I'm from … / I'm with … / I work for … (company)</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">I'm in sales.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">I'm in charge of …</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">I'm responsible for …</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">I work with …</li>
+            </ul>
+          </div>
+          <div class="phrase-card">
+            <div class="phrase-card-title">Introducing Someone Else</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">Can I introduce you to Miriam?</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Robert, have you met Vladimir?</li>
+            </ul>
+          </div>
+          <div class="phrase-card">
+            <div class="phrase-card-title">Talking About Your Company</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">The company was founded in …</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">We make / manufacture / sell / distribute / supply …</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">We have subsidiaries / factories / branches / outlets in …</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">We have a workforce of 2,000.</li>
+            </ul>
+          </div>
+          <div class="phrase-card">
+            <div class="phrase-card-title">Networking</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">We're very interested in …</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Do you know anyone who could help us?</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Could you let me have their contact details?</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Could I call him and mention your name?</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Let me give you my business card.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="unit-section" id="u5">
+        <div class="unit-header">
+          <span class="unit-num-badge">Unit 5</span>
+          <h2 class="unit-title">Advertising</h2>
+        </div>
+        <div class="phrase-grid">
+          <div class="phrase-card">
+            <div class="phrase-card-title">Introducing Yourself</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">On behalf of Alpha Advertising, I'd like to welcome you. My name's Marc Hayward.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Hi, everyone, I'm Marc Hayward. Good to see you all.</li>
+            </ul>
+          </div>
+          <div class="phrase-card">
+            <div class="phrase-card-title">Introducing the Topic</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">I'm going to tell you about the ideas we've come up with for the ad campaign.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">This morning, I'd like to outline the campaign concept we've developed for you.</li>
+            </ul>
+          </div>
+          <div class="phrase-card">
+            <div class="phrase-card-title">Giving a Plan of Your Talk</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">I've divided my presentation into three parts. Firstly, … Secondly, … Finally, …</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">My talk is in three parts. I'll start with …, move on to …, and finish with …</li>
+            </ul>
+          </div>
+          <div class="phrase-card">
+            <div class="phrase-card-title">Inviting Questions</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">If there's anything you're not clear about, feel free to stop me and ask any questions.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">I'd be grateful if you could leave any questions to the end.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="unit-section" id="u6">
+        <div class="unit-header">
+          <span class="unit-num-badge">Unit 6</span>
+          <h2 class="unit-title">Money &amp; Numbers</h2>
+        </div>
+        <div class="phrase-grid">
+          <div class="phrase-card">
+            <div class="phrase-card-title">Currencies</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">£3.15 → three pounds fifteen</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">$7.80 → seven dollars eighty</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">€250 → two hundred and fifty euros</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">¥125 → one hundred and twenty-five yen</li>
+            </ul>
+          </div>
+          <div class="phrase-card">
+            <div class="phrase-card-title">Decimals &amp; Fractions</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">16.5 → sixteen point five</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">17.38% → seventeen point three eight per cent</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">¼ → a quarter</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">½ → a half</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">¾ → three quarters</li>
+            </ul>
+          </div>
+          <div class="phrase-card">
+            <div class="phrase-card-title">Bigger Numbers</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">3,560 → three thousand five hundred and sixty (BrE)</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">1m → one million (1,000,000)</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">3bn → three billion (3,000,000,000)</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">$7.5bn → seven point five billion dollars</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">€478m → four hundred and seventy-eight million euros</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="unit-section" id="u8">
+        <div class="unit-header">
+          <span class="unit-num-badge">Unit 8</span>
+          <h2 class="unit-title">Human Resources</h2>
+        </div>
+        <div class="phrase-grid">
+          <div class="phrase-card">
+            <div class="phrase-card-title">Saying Who You Are</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">Good morning, my name's Lisa Mann.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Hello, Ben speaking.</li>
+            </ul>
+          </div>
+          <div class="phrase-card">
+            <div class="phrase-card-title">Asking for Information</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">I was wondering if you could give me …?</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Could you tell me …?</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">I'd also like to know …</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Could I ask you …?</li>
+            </ul>
+          </div>
+          <div class="phrase-card">
+            <div class="phrase-card-title">Checking Information</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">Just to get this clear …</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">There's just one other thing, I'd like to check …</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Are you saying …?</li>
+            </ul>
+          </div>
+          <div class="phrase-card">
+            <div class="phrase-card-title">Ending a Call</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">OK, I think that's everything.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Right, I think that's all I need to know.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="unit-section" id="u9">
+        <div class="unit-header">
+          <span class="unit-num-badge">Unit 9</span>
+          <h2 class="unit-title">International Markets</h2>
+        </div>
+        <div class="phrase-grid">
+          <div class="phrase-card">
+            <div class="phrase-card-title">Starting &amp; Exploring Positions</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">We'd like to reach a deal with you today.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Can you tell me a little about …?</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">What do you have in mind?</li>
+            </ul>
+          </div>
+          <div class="phrase-card">
+            <div class="phrase-card-title">Making Offers &amp; Concessions</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">If you order now, we'll give you a discount.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">We'd be prepared to offer you a better price if you increased your order.</li>
+            </ul>
+          </div>
+          <div class="phrase-card">
+            <div class="phrase-card-title">Checking Understanding</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">What do you mean?</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Have I got this right?</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">If I understand you correctly, …</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Are you saying …?</li>
+            </ul>
+          </div>
+          <div class="phrase-card">
+            <div class="phrase-card-title">Refusing &amp; Accepting an Offer</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">I'm not sure about that.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">That would be difficult for us.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Sounds a good idea to me. As long as we …</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Good, we agree on price, quantity, discounts …</li>
+            </ul>
+          </div>
+          <div class="phrase-card">
+            <div class="phrase-card-title">Playing for Time &amp; Closing</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">I'd like to think about it.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">I'll have to consult my colleagues about that.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">I think we've covered everything.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Great! We've got a deal.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Let me know if there are any problems.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="unit-section" id="u10">
+        <div class="unit-header">
+          <span class="unit-num-badge">Unit 10</span>
+          <h2 class="unit-title">Ethics</h2>
+        </div>
+        <div class="phrase-grid">
+          <div class="phrase-card">
+            <div class="phrase-card-title">Stating the Problem</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">The problem is, he's a really good salesman.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">The way I see it is he doesn't like rules.</li>
+            </ul>
+          </div>
+          <div class="phrase-card">
+            <div class="phrase-card-title">Looking at Options</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">So, what are our options?</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">There are (two / several) ways we could deal with this.</li>
+            </ul>
+          </div>
+          <div class="phrase-card">
+            <div class="phrase-card-title">Discussing Possible Effects</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">If we do that, he may come to his senses.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">One consequence could be that he gives in his resignation.</li>
+            </ul>
+          </div>
+          <div class="phrase-card">
+            <div class="phrase-card-title">Changing Your Approach</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">Let's look at it from another angle.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Let's consider another approach.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Why don't we deal with it in a different way?</li>
+            </ul>
+          </div>
+          <div class="phrase-card">
+            <div class="phrase-card-title">Expressing Qualified Agreement</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">I'm with you up to a point, but it may not work.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">You could be right, but it's a risky strategy.</li>
+            </ul>
+          </div>
+          <div class="phrase-card">
+            <div class="phrase-card-title">Making a Decision &amp; Next Steps</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">The best way to deal with the problem is to talk to him.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Let's see if we can sort this out.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">I'll arrange for Tom to meet us.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">The next thing to do is fix up a meeting.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="unit-section" id="u11">
+        <div class="unit-header">
+          <span class="unit-num-badge">Unit 11</span>
+          <h2 class="unit-title">Leadership</h2>
+        </div>
+        <div class="phrase-grid">
+          <div class="phrase-card">
+            <div class="phrase-card-title">Welcoming &amp; Structuring</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">Good morning, everyone.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Hello, everyone, welcome to …</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">I'm going to divide my talk into four parts.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">First, I'll give you … . After that, … . Next, … . Finally, …</li>
+            </ul>
+          </div>
+          <div class="phrase-card">
+            <div class="phrase-card-title">During the Presentation</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">I'll give you some background.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Let's start with the background.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">As you know, …</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">As you are aware, …</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">If you look at the graph …</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Could I draw your attention to the chart?</li>
+            </ul>
+          </div>
+          <div class="phrase-card">
+            <div class="phrase-card-title">Concluding &amp; Ending</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">To sum up, …</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">To summarise, …</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">If you have any questions, don't hesitate to ask.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Thanks very much. Any questions?</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Well, that's all I have to say. Thank you for listening.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="unit-section" id="u12">
+        <div class="unit-header">
+          <span class="unit-num-badge">Unit 12</span>
+          <h2 class="unit-title">Competition</h2>
+        </div>
+        <div class="phrase-grid">
+          <div class="phrase-card">
+            <div class="phrase-card-title">Diplomatically Giving Bad News</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">I'm sorry, we can't agree to that.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">I'm afraid your price is rather high.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">Unfortunately, we can't deliver any earlier.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">To be honest, we'd need credit terms.</li>
+            </ul>
+          </div>
+          <div class="phrase-card">
+            <div class="phrase-card-title">Using Speculative Language</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">It would probably arrive late.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">It could be a problem.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">It may be difficult to deliver.</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">We might not be able to do that.</li>
+            </ul>
+          </div>
+          <div class="phrase-card">
+            <div class="phrase-card-title">Expressing Disappointment</div>
+            <ul class="phrase-list">
+              <li class="phrase-item" onclick="toggleHighlight(this)">We were hoping for …</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">We were expecting …</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">We were looking for …</li>
+              <li class="phrase-item" onclick="toggleHighlight(this)">We had in mind …</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end browse-mode -->
+
+    <!-- FLASHCARD MODE -->
+    <div id="flashcard-mode">
+      <div class="fc-header">
+        <h2 class="fc-title">Karteikarten</h2>
+        <div class="fc-progress-wrap">
+          <div class="fc-progress-bar"><div class="fc-progress-fill" id="fc-pbar" style="width:0%"></div></div>
+          <span class="fc-progress-text" id="fc-ptext">0 / 0</span>
+        </div>
+      </div>
+      <div class="fc-unit-select" id="fc-unit-select"></div>
+      <div class="fc-card-area" onclick="flipCard()">
+        <div class="fc-card-inner" id="fc-inner">
+          <div class="fc-face fc-front">
+            <div class="fc-face-label">Kategorie</div>
+            <div class="fc-phrase" id="fc-category">–</div>
+            <div class="fc-hint">Tippen zum Umdrehen</div>
+          </div>
+          <div class="fc-face fc-back">
+            <div class="fc-face-label">Phrase</div>
+            <div class="fc-phrase" id="fc-phrase">–</div>
+          </div>
+        </div>
+      </div>
+      <div class="fc-controls">
+        <div class="fc-nav">
+          <button class="fc-btn" id="fc-prev" onclick="fcNav(-1)">← Zurück</button>
+          <button class="fc-btn" id="fc-next" onclick="fcNav(1)">Weiter →</button>
+        </div>
+        <button class="fc-shuffle" onclick="fcShuffle()">Karten mischen</button>
+      </div>
+    </div>
+
+    <!-- QUIZ MODE -->
+    <div id="quiz-mode">
+      <div class="quiz-header">
+        <h2>Quiz</h2>
+        <p>Welche Kategorie passt zu dieser Phrase?</p>
+      </div>
+      <div class="quiz-unit-select" id="quiz-unit-select"></div>
+      <div id="quiz-content"></div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+// ── DATA ──────────────────────────────────────────────────────────────────
+const UNITS = [
+  { id:'u1', num:'1', name:'Opinions & Meetings', color:'gold', phrases:[
+    {cat:'Asking for Opinions', p:'How do you feel about that?'},
+    {cat:'Asking for Opinions', p:'What do you think?'},
+    {cat:'Asking for Opinions', p:"What's your view?"},
+    {cat:'Giving Opinions', p:"I think / I don't think that's a good idea."},
+    {cat:'Giving Opinions', p:'In my opinion, we need new products.'},
+    {cat:'Agreeing', p:"That's true."},
+    {cat:'Agreeing', p:'I agree.'},
+    {cat:'Agreeing', p:'Absolutely.'},
+    {cat:'Agreeing', p:'Exactly.'},
+    {cat:'Agreeing', p:'I think so, too.'},
+    {cat:'Disagreeing', p:"I see / know what you mean, but I think there's a problem."},
+    {cat:'Disagreeing', p:"I'm not so sure."},
+    {cat:'Disagreeing', p:"Maybe, but that's not enough."},
+    {cat:'Making Suggestions', p:'I think we should reduce our prices.'},
+    {cat:'Making Suggestions', p:'How about a special promotion?'},
+    {cat:'Making Suggestions', p:"Why don't we talk to the big stores?"},
+    {cat:'Making Suggestions', p:'Maybe / Perhaps we could offer incentives.'},
+  ]},
+  { id:'u2', num:'2', name:'Travel', phrases:[
+    {cat:'Answering the Phone', p:'Hello, Carla Rodríguez speaking.'},
+    {cat:'Making Contact', p:"I'd like to speak to Martin Krause, please."},
+    {cat:'Identifying Yourself', p:"This is / My name's Karin Nordby."},
+    {cat:'Stating Your Purpose', p:'I\'m calling about …'},
+    {cat:'Stating Your Purpose', p:'The reason I\'m calling is …'},
+    {cat:'Making Arrangements', p:'Could we meet on Monday at 11:00?'},
+    {cat:'Making Arrangements', p:'How / What about June 12th?'},
+    {cat:'Making Arrangements', p:'Is 9:30 convenient / OK?'},
+    {cat:'Responding', p:"That's fine / OK for me."},
+    {cat:'Responding', p:"Sorry, I can't make it then."},
+    {cat:'Closing', p:"Good. So, I'll see you on the 8th."},
+    {cat:'Closing', p:'Thank you. Goodbye.'},
+    {cat:'Changing Arrangements', p:"I'm afraid I can't come on Friday. I'm very busy that day."},
+    {cat:'Changing Arrangements', p:"I'm sorry, I can't make it on Tuesday."},
+    {cat:'Changing Arrangements', p:"Could we fix another time?"},
+  ]},
+  { id:'u3', num:'3', name:'Change', phrases:[
+    {cat:'Starting', p:"OK, let's get down to business."},
+    {cat:'Starting', p:"Right, can we start, please?"},
+    {cat:'Setting Objectives', p:'The purpose of this meeting is …'},
+    {cat:'Setting Objectives', p:'The aims of this meeting are …'},
+    {cat:'Dealing with Interruptions', p:'Could you let him finish, please?'},
+    {cat:'Dealing with Interruptions', p:'Could you just hang on a moment, please?'},
+    {cat:'Keeping to the Point', p:"I'm not sure that's relevant."},
+    {cat:'Keeping to the Point', p:'Perhaps we could get back to the point.'},
+    {cat:'Speeding Up', p:'I think we should move on now.'},
+    {cat:'Speeding Up', p:'Can we come back to that?'},
+    {cat:'Slowing Down', p:'Hold on, we need to look at this in more detail.'},
+    {cat:'Slowing Down', p:'I think we should discuss this a bit more.'},
+    {cat:'Summarising', p:"OK, let's go over what we've agreed."},
+    {cat:'Summarising', p:'Right, to sum up then …'},
+  ]},
+  { id:'u4', num:'4', name:'Organization', phrases:[
+    {cat:'Greetings', p:'Hello, … . Great to see you again.'},
+    {cat:'Greetings', p:"Hi, … . How are you?"},
+    {cat:'Greetings', p:"How's everything going?"},
+    {cat:'Responding', p:'Fine, thanks.'},
+    {cat:'Responding', p:'Not too bad, thanks.'},
+    {cat:'Responding', p:'Pleased to meet you.'},
+    {cat:'Introducing Yourself', p:"I'm from … / I'm with … / I work for …"},
+    {cat:'Introducing Yourself', p:"I'm in charge of …"},
+    {cat:'Introducing Yourself', p:"I'm responsible for …"},
+    {cat:'Introducing Someone Else', p:'Can I introduce you to Miriam?'},
+    {cat:'Introducing Someone Else', p:'Robert, have you met Vladimir?'},
+    {cat:'Talking About Your Company', p:'The company was founded in …'},
+    {cat:'Talking About Your Company', p:'We make / manufacture / sell / distribute / supply …'},
+    {cat:'Talking About Your Company', p:'We have a workforce of 2,000.'},
+    {cat:'Networking', p:'Do you know anyone who could help us?'},
+    {cat:'Networking', p:'Could you let me have their contact details?'},
+    {cat:'Networking', p:'Let me give you my business card.'},
+  ]},
+  { id:'u5', num:'5', name:'Advertising', phrases:[
+    {cat:'Introducing Yourself', p:"On behalf of Alpha Advertising, I'd like to welcome you."},
+    {cat:'Introducing the Topic', p:"I'm going to tell you about the ideas we've come up with."},
+    {cat:'Introducing the Topic', p:"This morning, I'd like to outline the campaign concept."},
+    {cat:'Giving a Plan of Your Talk', p:"I've divided my presentation into three parts. Firstly, … Secondly, … Finally, …"},
+    {cat:'Giving a Plan of Your Talk', p:"My talk is in three parts. I'll start with …, move on to …, and finish with …"},
+    {cat:'Inviting Questions', p:"If there's anything you're not clear about, feel free to stop me."},
+    {cat:'Inviting Questions', p:"I'd be grateful if you could leave any questions to the end."},
+  ]},
+  { id:'u6', num:'6', name:'Money & Numbers', phrases:[
+    {cat:'Currencies', p:'£3.15 → three pounds fifteen'},
+    {cat:'Currencies', p:'$7.80 → seven dollars eighty'},
+    {cat:'Currencies', p:'€250 → two hundred and fifty euros'},
+    {cat:'Decimals', p:'16.5 → sixteen point five'},
+    {cat:'Decimals', p:'17.38% → seventeen point three eight per cent'},
+    {cat:'Fractions', p:'¼ → a quarter'},
+    {cat:'Fractions', p:'½ → a half'},
+    {cat:'Fractions', p:'¾ → three quarters'},
+    {cat:'Big Numbers', p:'1m → one million (1,000,000)'},
+    {cat:'Big Numbers', p:'3bn → three billion (3,000,000,000)'},
+    {cat:'Big Numbers', p:'$7.5bn → seven point five billion dollars'},
+  ]},
+  { id:'u8', num:'8', name:'Human Resources', phrases:[
+    {cat:'Saying Who You Are', p:"Good morning, my name's Lisa Mann."},
+    {cat:'Saying Who You Are', p:"Hello, Ben speaking."},
+    {cat:'Asking for Information', p:'I was wondering if you could give me …?'},
+    {cat:'Asking for Information', p:'Could you tell me …?'},
+    {cat:'Asking for Information', p:"I'd also like to know …"},
+    {cat:'Checking Information', p:'Just to get this clear …'},
+    {cat:'Checking Information', p:'Are you saying …?'},
+    {cat:'Ending a Call', p:"OK, I think that's everything."},
+    {cat:'Ending a Call', p:"Right, I think that's all I need to know."},
+  ]},
+  { id:'u9', num:'9', name:'International Markets', phrases:[
+    {cat:'Starting Positions', p:"We'd like to reach a deal with you today."},
+    {cat:'Exploring Positions', p:'Can you tell me a little about …?'},
+    {cat:'Exploring Positions', p:'What do you have in mind?'},
+    {cat:'Making Offers', p:"If you order now, we'll give you a discount."},
+    {cat:'Making Offers', p:"We'd be prepared to offer you a better price if you increased your order."},
+    {cat:'Checking Understanding', p:'Have I got this right?'},
+    {cat:'Checking Understanding', p:'If I understand you correctly, …'},
+    {cat:'Refusing an Offer', p:"I'm not sure about that."},
+    {cat:'Refusing an Offer', p:'That would be difficult for us.'},
+    {cat:'Accepting an Offer', p:'Sounds a good idea to me. As long as we …'},
+    {cat:'Playing for Time', p:"I'd like to think about it."},
+    {cat:'Playing for Time', p:"I'll have to consult my colleagues about that."},
+    {cat:'Closing the Deal', p:"I think we've covered everything."},
+    {cat:'Closing the Deal', p:"Great! We've got a deal."},
+    {cat:'Following Up', p:'Let me know if there are any problems.'},
+  ]},
+  { id:'u10', num:'10', name:'Ethics', phrases:[
+    {cat:'Stating the Problem', p:"The problem is, he's a really good salesman."},
+    {cat:'Stating the Problem', p:"The way I see it is he doesn't like rules."},
+    {cat:'Looking at Options', p:'So, what are our options?'},
+    {cat:'Looking at Options', p:'There are several ways we could deal with this.'},
+    {cat:'Discussing Effects', p:'If we do that, he may come to his senses.'},
+    {cat:'Discussing Effects', p:'One consequence could be that he gives in his resignation.'},
+    {cat:'Changing Your Approach', p:"Let's look at it from another angle."},
+    {cat:'Changing Your Approach', p:"Why don't we deal with it in a different way?"},
+    {cat:'Qualified Agreement', p:"I'm with you up to a point, but it may not work."},
+    {cat:'Qualified Agreement', p:"You could be right, but it's a risky strategy."},
+    {cat:'Making a Decision', p:'The best way to deal with the problem is to talk to him.'},
+    {cat:'Making a Decision', p:"Let's see if we can sort this out."},
+    {cat:'Stating Future Action', p:"I'll arrange for Tom to meet us."},
+    {cat:'Stating Future Action', p:'The next thing to do is fix up a meeting.'},
+  ]},
+  { id:'u11', num:'11', name:'Leadership', phrases:[
+    {cat:'Welcoming', p:'Good morning, everyone.'},
+    {cat:'Welcoming', p:'Hello, everyone, welcome to …'},
+    {cat:'Structuring', p:"I'm going to divide my talk into four parts."},
+    {cat:'Structuring', p:'First, I\'ll give you … . After that, … . Next, … . Finally, …'},
+    {cat:'Background', p:"I'll give you some background."},
+    {cat:'Background', p:"Let's start with the background."},
+    {cat:'Audience Knowledge', p:'As you know, …'},
+    {cat:'Audience Knowledge', p:'As you are aware, …'},
+    {cat:'Referring to Visuals', p:'If you look at the graph …'},
+    {cat:'Referring to Visuals', p:'Could I draw your attention to the chart?'},
+    {cat:'Concluding', p:'To sum up, …'},
+    {cat:'Concluding', p:'To summarise, …'},
+    {cat:'Ending', p:'Thanks very much. Any questions?'},
+    {cat:'Ending', p:'Well, that\'s all I have to say. Thank you for listening.'},
+  ]},
+  { id:'u12', num:'12', name:'Competition', phrases:[
+    {cat:'Giving Bad News', p:"I'm sorry, we can't agree to that."},
+    {cat:'Giving Bad News', p:"I'm afraid your price is rather high."},
+    {cat:'Giving Bad News', p:"Unfortunately, we can't deliver any earlier."},
+    {cat:'Giving Bad News', p:"To be honest, we'd need credit terms."},
+    {cat:'Speculative Language', p:'It would probably arrive late.'},
+    {cat:'Speculative Language', p:'It could be a problem.'},
+    {cat:'Speculative Language', p:'It may be difficult to deliver.'},
+    {cat:'Speculative Language', p:"We might not be able to do that."},
+    {cat:'Expressing Disappointment', p:'We were hoping for …'},
+    {cat:'Expressing Disappointment', p:'We were expecting …'},
+    {cat:'Expressing Disappointment', p:'We were looking for …'},
+    {cat:'Expressing Disappointment', p:'We had in mind …'},
+  ]},
+];
+
+// ── STATE ─────────────────────────────────────────────────────────────────
+let currentMode = 'browse';
+let fcUnits = ['u1'];
+let fcCards = [];
+let fcIndex = 0;
+let fcFlipped = false;
+
+let quizUnits = ['u9','u10'];
+let quizCards = [];
+let quizIndex = 0;
+let quizScore = 0;
+let quizAnswered = null;
+let quizDone = false;
+
+// ── UTILS ─────────────────────────────────────────────────────────────────
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length-1; i > 0; i--) {
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]] = [a[j],a[i]];
+  }
+  return a;
+}
+
+function getAllPhrases(unitIds) {
+  return unitIds.flatMap(id => {
+    const u = UNITS.find(u => u.id === id);
+    return u ? u.phrases.map(p => ({...p, unitName: u.name, unitNum: u.num})) : [];
+  });
+}
+
+// ── BROWSE MODE ───────────────────────────────────────────────────────────
+function scrollToUnit(id) {
+  document.getElementById('browse-mode').style.display = 'block';
+  document.getElementById('flashcard-mode').style.display = 'none';
+  document.getElementById('quiz-mode').style.display = 'none';
+  document.getElementById('search-results').style.display = 'none';
+  document.getElementById('search-input').value = '';
+  setMode('browse');
+  setTimeout(() => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({behavior:'smooth', block:'start'});
+  }, 50);
+  document.querySelectorAll('.nav-item').forEach((b,i) => b.classList.remove('active'));
+  const units = ['u1','u2','u3','u4','u5','u6','u8','u9','u10','u11','u12'];
+  const idx = units.indexOf(id);
+  if (idx >= 0) document.querySelectorAll('.nav-item')[idx].classList.add('active');
+}
+
+function toggleHighlight(el) {
+  el.classList.toggle('highlighted');
+}
+
+// ── SEARCH ────────────────────────────────────────────────────────────────
+function handleSearch(q) {
+  const sr = document.getElementById('search-results');
+  const bm = document.getElementById('browse-mode');
+  const fm = document.getElementById('flashcard-mode');
+  const qm = document.getElementById('quiz-mode');
+  if (!q.trim()) {
+    sr.style.display = 'none';
+    if (currentMode === 'browse') bm.style.display = 'block';
+    else if (currentMode === 'flashcard') fm.style.display = 'block';
+    else qm.style.display = 'block';
+    return;
+  }
+  bm.style.display = 'none';
+  fm.style.display = 'none';
+  qm.style.display = 'none';
+  sr.style.display = 'block';
+  const term = q.toLowerCase();
+  const results = [];
+  UNITS.forEach(u => {
+    u.phrases.forEach(ph => {
+      if (ph.p.toLowerCase().includes(term) || ph.cat.toLowerCase().includes(term)) {
+        results.push({phrase:ph.p, cat:ph.cat, unit:`Unit ${u.num} – ${u.name}`});
+      }
+    });
+  });
+  if (!results.length) {
+    sr.innerHTML = `<div class="no-results">Keine Phrasen gefunden für „${q}"</div>`;
+    return;
+  }
+  const re = new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`, 'gi');
+  sr.innerHTML = `<div style="font-size:13px;color:var(--ink-light);margin-bottom:1rem;">${results.length} Ergebnis${results.length!==1?'se':''} für „${q}"</div>` +
+    results.map(r => `<div class="search-result-item">
+      <div class="search-result-phrase">${r.phrase.replace(re,'<mark>$1</mark>')}</div>
+      <div class="search-result-meta">${r.cat} · ${r.unit}</div>
+    </div>`).join('');
+}
+
+// ── MODE SWITCH ───────────────────────────────────────────────────────────
+function setMode(mode) {
+  currentMode = mode;
+  document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.mode-btn')[['browse','flashcard','quiz'].indexOf(mode)].classList.add('active');
+  document.getElementById('browse-mode').style.display = mode==='browse' ? 'block' : 'none';
+  document.getElementById('flashcard-mode').style.display = mode==='flashcard' ? 'block' : 'none';
+  document.getElementById('quiz-mode').style.display = mode==='quiz' ? 'block' : 'none';
+  document.getElementById('search-results').style.display = 'none';
+  document.getElementById('search-input').value = '';
+  if (mode==='flashcard') initFlashcards();
+  if (mode==='quiz') initQuiz();
+}
+
+// ── FLASHCARDS ────────────────────────────────────────────────────────────
+function initFlashcards() {
+  buildFcUnitSelect();
+  buildFcDeck();
+}
+
+function buildFcUnitSelect() {
+  const el = document.getElementById('fc-unit-select');
+  el.innerHTML = UNITS.map(u =>
+    `<button class="fc-unit-btn ${fcUnits.includes(u.id)?'active':''}"
+      onclick="toggleFcUnit('${u.id}')">${u.num}. ${u.name}</button>`
+  ).join('');
+}
+
+function toggleFcUnit(id) {
+  if (fcUnits.includes(id)) {
+    if (fcUnits.length === 1) return;
+    fcUnits = fcUnits.filter(u => u !== id);
+  } else {
+    fcUnits.push(id);
+  }
+  buildFcUnitSelect();
+  buildFcDeck();
+}
+
+function buildFcDeck() {
+  fcCards = getAllPhrases(fcUnits);
+  fcIndex = 0;
+  fcFlipped = false;
+  renderFcCard();
+}
+
+function renderFcCard() {
+  if (!fcCards.length) return;
+  const card = fcCards[fcIndex];
+  document.getElementById('fc-inner').classList.toggle('flipped', fcFlipped);
+  document.getElementById('fc-category').textContent = card.cat;
+  document.getElementById('fc-phrase').textContent = card.p;
+  const pct = Math.round(fcIndex / fcCards.length * 100);
+  document.getElementById('fc-pbar').style.width = pct + '%';
+  document.getElementById('fc-ptext').textContent = `${fcIndex+1} / ${fcCards.length}`;
+  document.getElementById('fc-prev').disabled = fcIndex === 0;
+  document.getElementById('fc-next').disabled = fcIndex === fcCards.length - 1;
+}
+
+function flipCard() {
+  fcFlipped = !fcFlipped;
+  document.getElementById('fc-inner').classList.toggle('flipped', fcFlipped);
+}
+
+function fcNav(dir) {
+  fcIndex = Math.max(0, Math.min(fcCards.length-1, fcIndex+dir));
+  fcFlipped = false;
+  renderFcCard();
+}
+
+function fcShuffle() {
+  fcCards = shuffle(fcCards);
+  fcIndex = 0;
+  fcFlipped = false;
+  renderFcCard();
+}
+
+// ── QUIZ ──────────────────────────────────────────────────────────────────
+function initQuiz() {
+  buildQuizUnitSelect();
+  buildQuizDeck();
+}
+
+function buildQuizUnitSelect() {
+  const el = document.getElementById('quiz-unit-select');
+  el.innerHTML = UNITS.map(u =>
+    `<button class="fc-unit-btn ${quizUnits.includes(u.id)?'active':''}"
+      onclick="toggleQuizUnit('${u.id}')">${u.num}. ${u.name}</button>`
+  ).join('');
+}
+
+function toggleQuizUnit(id) {
+  if (quizUnits.includes(id)) {
+    if (quizUnits.length === 1) return;
+    quizUnits = quizUnits.filter(u => u !== id);
+  } else {
+    quizUnits.push(id);
+  }
+  buildQuizUnitSelect();
+  buildQuizDeck();
+}
+
+function buildQuizDeck() {
+  quizCards = shuffle(getAllPhrases(quizUnits));
+  quizIndex = 0;
+  quizScore = 0;
+  quizAnswered = null;
+  quizDone = false;
+  renderQuiz();
+}
+
+function renderQuiz() {
+  const el = document.getElementById('quiz-content');
+  if (quizDone || quizIndex >= quizCards.length) {
+    const total = Math.min(quizCards.length, quizIndex);
+    const pct = total > 0 ? Math.round(quizScore/total*100) : 0;
+    const color = pct>=80?'var(--teal)':pct>=50?'var(--gold)':'var(--red)';
+    el.innerHTML = `<div class="q-done">
+      <div class="q-done-score">${quizScore}</div>
+      <div class="q-done-total">von ${total} richtig</div>
+      <div class="q-done-bar"><div class="q-done-fill" style="width:${pct}%;background:${color}"></div></div>
+      <div class="q-done-label">${pct}% – ${pct>=80?'Ausgezeichnet!':pct>=50?'Gut gemacht!':'Weiter üben!'}</div>
+      <button class="fc-btn primary" onclick="buildQuizDeck()">Nochmal versuchen</button>
+    </div>`;
+    return;
+  }
+  const card = quizCards[quizIndex];
+  const pct = Math.round(quizIndex / quizCards.length * 100);
+  const allCats = [...new Set(getAllPhrases(quizUnits).map(c => c.cat))];
+  const wrongCats = shuffle(allCats.filter(c => c !== card.cat)).slice(0,3);
+  const opts = shuffle([card.cat, ...wrongCats]);
+  const letters = ['A','B','C','D'];
+
+  el.innerHTML = `
+    <div class="q-progress">
+      <div class="q-bar"><div class="q-fill" style="width:${pct}%"></div></div>
+      <span class="q-text">${quizIndex+1} / ${quizCards.length}</span>
+      <span class="q-score-badge">${quizScore} Punkte</span>
+    </div>
+    <div class="q-question">
+      <div class="q-unit-tag">Unit ${card.unitNum} – ${card.unitName}</div>
+      <div class="q-phrase">"${card.p}"</div>
+    </div>
+    <div class="q-options">
+      ${opts.map((opt,i) => `
+        <button class="q-opt" id="qopt${i}" onclick="answerQuiz('${opt.replace(/'/g,"\\'")}','${card.cat.replace(/'/g,"\\'")}',${i})">
+          <span class="opt-letter">${letters[i]}</span>${opt}
+        </button>`).join('')}
+    </div>
+    <div class="q-next-row" id="q-next-row" style="display:none">
+      <span id="q-feedback" style="font-size:14px;font-weight:500;"></span>
+      <button class="fc-btn primary" onclick="nextQuiz()">Weiter →</button>
+    </div>`;
+}
+
+function answerQuiz(chosen, correct, idx) {
+  if (quizAnswered !== null) return;
+  quizAnswered = chosen;
+  document.querySelectorAll('.q-opt').forEach(b => b.disabled = true);
+  const isCorrect = chosen === correct;
+  if (isCorrect) quizScore++;
+  document.querySelectorAll('.q-opt').forEach(b => {
+    const text = b.textContent.trim().slice(1).trim();
+    if (text === correct) b.classList.add('correct');
+    else if (text === chosen && !isCorrect) b.classList.add('wrong');
+  });
+  const row = document.getElementById('q-next-row');
+  const fb = document.getElementById('q-feedback');
+  fb.textContent = isCorrect ? '✓ Richtig!' : `✗ Richtig wäre: ${correct}`;
+  fb.style.color = isCorrect ? 'var(--teal)' : 'var(--red)';
+  row.style.display = 'flex';
+}
+
+function nextQuiz() {
+  quizIndex++;
+  quizAnswered = null;
+  if (quizIndex >= quizCards.length) quizDone = true;
+  renderQuiz();
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────────
+window.addEventListener('scroll', () => {
+  const units = ['u1','u2','u3','u4','u5','u6','u8','u9','u10','u11','u12'];
+  const navItems = document.querySelectorAll('.nav-item');
+  if (currentMode !== 'browse') return;
+  for (let i = units.length-1; i >= 0; i--) {
+    const el = document.getElementById(units[i]);
+    if (el && el.getBoundingClientRect().top <= 120) {
+      navItems.forEach(b => b.classList.remove('active'));
+      navItems[i].classList.add('active');
+      break;
+    }
+  }
+});
+</script>
+
+</body>
+</html>
